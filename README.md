@@ -1,22 +1,13 @@
 # Atlas
 
+##### A sandboxing Elixir/Phoenix app built around a growing database of my favorite places in Colorado 
+
 ![Elixir CI](https://github.com/noelworden/atlas/workflows/Elixir%20CI/badge.svg)
 
-To start your Phoenix server:
+
+To spin up project:
 
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.setup`
-  * Install Node.js dependencies with `npm install` inside the `assets` directory
   * Start Phoenix endpoint with `mix phx.server`
-
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
-
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * If no errors, app is now running at [`localhost:4000`](http://localhost:4000)
