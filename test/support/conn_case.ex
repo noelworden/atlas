@@ -14,6 +14,8 @@ defmodule AtlasWeb.ConnCase do
   by setting `use AtlasWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
+  alias Atlas.Repo
+  alias Ecto.Adapters.SQL.Sandbox
 
   use ExUnit.CaseTemplate
 
@@ -32,10 +34,10 @@ defmodule AtlasWeb.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Atlas.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Atlas.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}

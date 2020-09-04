@@ -13,6 +13,8 @@ defmodule Atlas.DataCase do
   by setting `use Atlas.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
+  alias Atlas.Repo
+  alias Ecto.Adapters.SQL.Sandbox
 
   use ExUnit.CaseTemplate
 
@@ -28,10 +30,10 @@ defmodule Atlas.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Atlas.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Atlas.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     :ok

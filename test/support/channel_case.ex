@@ -14,6 +14,8 @@ defmodule AtlasWeb.ChannelCase do
   by setting `use AtlasWeb.ChannelCase, async: true`, although
   this option is not recommended for other databases.
   """
+  alias Atlas.Repo
+  alias Ecto.Adapters.SQL.Sandbox
 
   use ExUnit.CaseTemplate
 
@@ -29,10 +31,10 @@ defmodule AtlasWeb.ChannelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Atlas.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Atlas.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     :ok
