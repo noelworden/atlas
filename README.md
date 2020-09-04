@@ -1,5 +1,7 @@
 # Atlas
 
+![Elixir CI](https://github.com/noelworden/atlas/workflows/Elixir%20CI/badge.svg)
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
