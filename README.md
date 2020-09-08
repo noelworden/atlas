@@ -4,13 +4,11 @@
 
 ![Elixir CI](https://github.com/noelworden/atlas/workflows/Elixir%20CI/badge.svg)
 
-
-To spin up project:
-
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server`
-  * If no errors, app is now running at [`localhost:4000`](http://localhost:4000)
+## Spinning up project
+  - Install dependencies with `mix deps.get`
+  - Create and migrate your database with `mix ecto.setup`
+  - Start Phoenix endpoint with `mix phx.server`
+  - If no errors, app is now running at [`localhost:4000`](http://localhost:4000)
 
 ## Deploying to staging
 ### Hosted by Gigalixir, docs can be found [here](https://gigalixir.readthedocs.io/en/latest/)
