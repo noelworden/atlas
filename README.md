@@ -6,9 +6,22 @@
 ----
 ## Spinning up project with Docker
   - Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
-  - `docker-compose build`
-  - `docker-compose up`
+  - In one terminal tab:
+    - `docker-compose build`
+    - `docker-compose up`
+  - In a second tab, once the two commands in the first tab are completed:  
+    - `docker-compose exec web mix ecto.setup`
   - If everything spins up with no errors, site will be live at [localhost:4000](http://localhost:4000)
+----
+## Debugging
+With the project running on Docker, the standard `iex -S mix` will not work to spin up an iEX console. An updated command, that works with Docker is:
+
+`docker-compose exec web iex -S mix`
+
+This command will maintain history from one iEX shell to another:
+
+`docker-compose exec web iex --erl "-kernel shell_history enabled" -S mix`
+
 ----
 ## Deploying to staging
 ### Hosted by Gigalixir, docs can be found [here](https://gigalixir.readthedocs.io/en/latest/)
