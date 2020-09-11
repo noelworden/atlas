@@ -1,0 +1,31 @@
+version: '3.7'
+
+services:
+  web:
+    build:
+      context: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./assets/css:/app/assets/css
+      - ./assets/js:/app/assets/js
+      - ./assets/static:/app/assets/static
+      - ./assets/.babelrc:/app/assets/.babelrc
+      - ./assets/package.json:/app/assets/package.json
+      - ./assets/webpack.config.js:/app/assets/webpack.config.js
+      - ./config:/app/config
+      - ./lib:/app/lib
+      - ./priv:/app/priv
+      - ./mix.exs:/app/mix.exs
+      - ./mix.lock:/app/mix.lock
+      - ./test:/app/test
+    depends_on:
+      - db
+  db:
+    image: postgres:11.5
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    ports: 
+      - "5432:5432"
+volumes:
+  postgres:
