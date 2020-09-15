@@ -1,6 +1,6 @@
 FROM bitwalker/alpine-elixir-phoenix:1.10.3
 
-run mkdir /app
+RUN mkdir /app
 WORKDIR /app
 
 COPY mix.exs mix.lock ./
