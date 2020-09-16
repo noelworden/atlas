@@ -9,7 +9,7 @@ config :atlas, Atlas.Repo,
   username: "postgres",
   password: "postgres",
   database: "atlas_test#{System.get_env("MIX_TEST_PARTITION")}",
-  hostname: "db",
+  hostname: System.get_env("DB_HOSTNAME", "db"),
   pool: Ecto.Adapters.SQL.Sandbox
 
 # We don't run a server during test. If one is required,
