@@ -1,0 +1,113 @@
+<h1>Show Destination</h1>
+
+<ul>
+
+  <li>
+    <strong>Longitude:</strong>
+    <%= @destination.longitude %>
+  </li>
+
+  <li>
+    <strong>Latitude:</strong>
+    <%= @destination.latitude %>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @destination.name %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @destination.description %>
+  </li>
+
+  <li>
+    <strong>Spinner friendly:</strong>
+    <%= @destination.spinner_friendly %>
+  </li>
+
+  <li>
+    <strong>Lake:</strong>
+    <%= @destination.lake %>
+  </li>
+
+  <li>
+    <strong>Less than one hour:</strong>
+    <%= @destination.less_than_one_hour %>
+  </li>
+
+  <li>
+    <strong>One to three hours:</strong>
+    <%= @destination.one_to_three_hours %>
+  </li>
+
+  <li>
+    <strong>Greater than three hours:</strong>
+    <%= @destination.greater_than_three_hours %>
+  </li>
+
+  <li>
+    <strong>Car friendly:</strong>
+    <%= @destination.car_friendly %>
+  </li>
+
+  <li>
+    <strong>Hike in:</strong>
+    <%= @destination.hike_in %>
+  </li>
+
+  <li>
+    <strong>Allows dogs:</strong>
+    <%= @destination.allows_dogs %>
+  </li>
+
+  <li>
+    <strong>Dogs off leash:</strong>
+    <%= @destination.dogs_off_leash %>
+  </li>
+
+  <li>
+    <strong>Season spring:</strong>
+    <%= @destination.season_spring %>
+  </li>
+
+  <li>
+    <strong>Season summer:</strong>
+    <%= @destination.season_summer %>
+  </li>
+
+  <li>
+    <strong>Season fall:</strong>
+    <%= @destination.season_fall %>
+  </li>
+
+  <li>
+    <strong>Season winter:</strong>
+    <%= @destination.season_winter %>
+  </li>
+
+  <li>
+    <strong>Car camp:</strong>
+    <%= @destination.car_camp %>
+  </li>
+
+  <li>
+    <strong>Backpack camp:</strong>
+    <%= @destination.backpack_camp %>
+  </li>
+
+  <li>
+    <strong>Fee:</strong>
+    <%= @destination.fee %>
+  </li>
+
+  <li>
+    <strong>Ice fishing:</strong>
+    <%= @destination.ice_fishing %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.destination_path(@conn, :edit, @destination) %></span>
+<span><%= link "Back", to: Routes.destination_path(@conn, :index) %></span>

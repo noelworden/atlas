@@ -1,0 +1,95 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <%= label f, :longitude %>
+  <%= number_input f, :longitude, step: "any" %>
+  <%= error_tag f, :longitude %>
+
+  <%= label f, :latitude %>
+  <%= number_input f, :latitude, step: "any" %>
+  <%= error_tag f, :latitude %>
+
+  <%= label f, :name %>
+  <%= text_input f, :name %>
+  <%= error_tag f, :name %>
+
+  <%= label f, :description %>
+  <%= text_input f, :description %>
+  <%= error_tag f, :description %>
+
+  <%= label f, :spinner_friendly %>
+  <%= checkbox f, :spinner_friendly %>
+  <%= error_tag f, :spinner_friendly %>
+
+  <%= label f, :lake %>
+  <%= checkbox f, :lake %>
+  <%= error_tag f, :lake %>
+
+  <%= label f, :less_than_one_hour %>
+  <%= checkbox f, :less_than_one_hour %>
+  <%= error_tag f, :less_than_one_hour %>
+
+  <%= label f, :one_to_three_hours %>
+  <%= checkbox f, :one_to_three_hours %>
+  <%= error_tag f, :one_to_three_hours %>
+
+  <%= label f, :greater_than_three_hours %>
+  <%= checkbox f, :greater_than_three_hours %>
+  <%= error_tag f, :greater_than_three_hours %>
+
+  <%= label f, :car_friendly %>
+  <%= checkbox f, :car_friendly %>
+  <%= error_tag f, :car_friendly %>
+
+  <%= label f, :hike_in %>
+  <%= checkbox f, :hike_in %>
+  <%= error_tag f, :hike_in %>
+
+  <%= label f, :allows_dogs %>
+  <%= checkbox f, :allows_dogs %>
+  <%= error_tag f, :allows_dogs %>
+
+  <%= label f, :dogs_off_leash %>
+  <%= checkbox f, :dogs_off_leash %>
+  <%= error_tag f, :dogs_off_leash %>
+
+  <%= label f, :season_spring %>
+  <%= checkbox f, :season_spring %>
+  <%= error_tag f, :season_spring %>
+
+  <%= label f, :season_summer %>
+  <%= checkbox f, :season_summer %>
+  <%= error_tag f, :season_summer %>
+
+  <%= label f, :season_fall %>
+  <%= checkbox f, :season_fall %>
+  <%= error_tag f, :season_fall %>
+
+  <%= label f, :season_winter %>
+  <%= checkbox f, :season_winter %>
+  <%= error_tag f, :season_winter %>
+
+  <%= label f, :car_camp %>
+  <%= checkbox f, :car_camp %>
+  <%= error_tag f, :car_camp %>
+
+  <%= label f, :backpack_camp %>
+  <%= checkbox f, :backpack_camp %>
+  <%= error_tag f, :backpack_camp %>
+
+  <%= label f, :fee %>
+  <%= checkbox f, :fee %>
+  <%= error_tag f, :fee %>
+
+  <%= label f, :ice_fishing %>
+  <%= checkbox f, :ice_fishing %>
+  <%= error_tag f, :ice_fishing %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
