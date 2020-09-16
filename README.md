@@ -13,6 +13,20 @@
     - `docker-compose exec web mix ecto.setup`
   - If everything spins up with no errors, site will be live at [localhost:4000](http://localhost:4000)
 ----
+## `run` vs `exec`
+
+When executing a command with `docker-compose` it can be run with either `run` or `exec`. 
+
+From the docs:
+- The docker `run` command first creates a writeable container layer over the specified image, and then `starts` it using the specified command
+  - If using `run`, adding the `--rm` flag will automatically remove the container when the command is finished
+- The docker `exec` command runs a new command in a running container
+
+References:
+https://docs.docker.com/engine/reference/commandline/run/
+https://docs.docker.com/engine/reference/commandline/exec/
+
+----
 ## Debugging
 With the project running on Docker, the standard `iex -S mix` will not work to spin up an iEX console. An updated command, that works with Docker is:
 
@@ -21,6 +35,20 @@ With the project running on Docker, the standard `iex -S mix` will not work to s
 This command will maintain history from one iEX shell to another:
 
 `docker-compose exec web iex --erl "-kernel shell_history enabled" -S mix`
+
+----
+## Testing
+With the project running on Docker tests can be run with:
+
+`docker-compose exec web mix test`
+
+To run only a specific test file:
+
+`docker-compose exec web mix test test/<path to file>`
+
+To run only a specific test within a test file:
+
+`docker-compose exec web mix test test/<path to file>:<test line number>`
 
 ----
 ## Deploying to staging
