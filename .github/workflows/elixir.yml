@@ -11,9 +11,6 @@ jobs:
     name: Build & Test
     runs-on: ubuntu-latest
 
-    container:
-      image: elixir:1.10.3
-
     services:
       db:
         image: postgres
@@ -25,17 +22,25 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     steps:
     - uses: actions/checkout@v2
-    - name: Install hex
-      run: mix local.hex --force
+    - name: Set up Elixir
+      uses: actions/setup-elixir@v1
+      with:
+        elixir-version: '1.10.3' # Define the elixir version [required]
+        otp-version: '22.3' # Define the OTP version [required]
+    - name: Restore dependencies cache
+      uses: actions/cache@v2
+      with:
+        path: deps
+        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-mix-
     - name: Install dependencies
       run: mix deps.get
-    - name: Install rebar
-      run: mix local.rebar --force
     - name: Run tests
       run: mix test
+      env:
+        DB_HOSTNAME: "localhost"
     - name: Check Formatting
       run: mix format --check-formatted
     - name: Run Credo
