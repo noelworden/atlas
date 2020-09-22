@@ -9,3 +9,6 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+# Seed `destinations` table from CSV
+Atlas.Mapping.CSVUtil.column_data("priv/repo/data/destinations.csv")
