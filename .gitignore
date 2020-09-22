@@ -35,3 +35,6 @@ npm-debug.log
 
 # Keep editor-specific files out of the repo
 .vscode
+
+# Don't need to include Mac's metadata files
+.DS_Store
