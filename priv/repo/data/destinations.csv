@@ -1,0 +1,107 @@
+longitude,latitude,name,description,spinner_friendly,lake,less_than_one_hour,one_to_three_hours,greater_than_three_hours,car_friendly,hike_in,allows_dogs,dogs_off_leash,season_spring,season_summer,season_fall,season_winter,car_camp,backpack_camp,fee,ice_fishing
+-105.6929,39.8763,Heart Lake,"Rumors of big Cutties, probably early in season. ~ 2.5 hr hike. Latest notes: 20190909",true,true,true,false,false,true,true,true,true,true,true,true,false,false,true,false,false
+-105.6896,39.8714,Rogers Lake,"Good sized Cutties, ~2.5 hr hike. Latest notes: 20190909",true,true,true,false,false,true,true,true,true,true,true,true,false,false,true,false,false
+-105.425722,40.191833,Dry St Vrain Creek,"40 min hike, few people",true,false,false,true,false,false,true,true,true,false,true,true,false,true,true,false,false
+-105.6869,40.6042,Browns Lake,"Off trail hike, not exclusive camping",true,true,false,true,true,false,true,true,true,false,true,true,false,false,true,false,false
+-106.6294,39.4946,Nolan Lake,"3 mile hike, pretty chill camping",true,true,false,false,true,true,true,true,true,false,true,true,false,false,true,false,false
+-105.952313,40.147219,Willow Creek Reservoir,"State park, ice fishing",true,true,false,true,false,true,false,true,false,true,true,true,true,true,false,true,true
+-105.754959,40.112731,Arapahoe Creek,Feeder creek to L Granby. Few but big trout,true,false,false,true,false,true,false,true,true,false,true,true,false,true,false,true,false
+-105.744032,40.105752,Monarch Lake,"Alpine lake, upstream of L Granby. Supposedly big trout. SUP friendly",true,true,false,true,false,true,false,true,false,false,true,true,false,true,false,true,false
+-105.661813,39.976251,Jasper Lake,Indian Peaks backpack/fish,true,true,true,false,false,false,true,true,true,false,true,true,false,false,true,true,false
+-105.616318,39.94901,Lost Lake,"Quick hike, lots of people",true,true,true,false,false,true,true,true,false,true,true,true,true,true,true,true,true
+-105.605364,39.953427,Middle Boulder Creek,Quick car camp/fishing,false,false,true,false,false,false,true,true,true,false,true,true,false,true,true,false,false
+-105.604523,40.068575,South St Vrain Creek,"Feeder stream, full of brookies. Get it early in the season.",false,false,true,false,false,true,true,true,true,false,true,true,false,false,false,true,false
+-105.578156,40.011311,Rainbow Lakes,"Quick hike, some pople",true,true,true,false,false,true,true,true,true,false,true,true,false,false,true,true,false
+-105.524471,40.130052,Middle St Vrain Creek,"Only have to walk to first meadow, fish back. Latest notes: 20190824",false,false,true,false,false,true,true,true,true,false,true,true,false,true,true,false,false
+-105.475222,40.380333,Big Thompson,,true,false,true,false,false,true,false,false,false,true,true,true,true,false,false,false,false
+-105.361226,39.018824,South Platte @ Happy Meadows CG,2 hr Hike from trailhead to good fishing,true,false,false,true,false,true,true,true,true,true,true,true,false,true,true,false,false
+-105.368076,39.06463,South Platte Downstream of CG,"Hour-ish hike, big drop down the canyon",true,false,false,true,false,false,true,true,true,true,true,true,false,true,true,false,false
+-105.389796,38.95719,11 Mile Canyon,Lots of people. Dont have to drive all the way back in. Camp In NF land nearby,true,false,false,true,false,true,false,true,false,true,true,true,true,true,false,true,false
+-105.809379,39.036274,Badger Basin SWA,South Platte cattleland. Big fish. Bring bug spray. Multiple parking spots,true,false,false,true,false,true,false,true,true,true,true,true,true,false,false,false,false
+-105.8663,39.0814,Tomahawk SWA Parking 01,"South Platte btwn Hartsel & Fairplay. Priority. Walk downstream, then drop down ridge. Downstream is stocked",true,false,false,true,false,true,false,true,true,true,true,true,true,false,false,false,false
+-105.865,39.0923,Tomahawk SWA Parking 02,South Platte btwn Hartsel & Fairplay,true,false,false,true,false,true,false,true,true,true,true,true,true,false,false,false,false
+-105.8508,39.0797,Tomahawk SWA Parking 03,South Platte btwn Hartsel & Fairplay,true,false,false,true,false,true,false,true,true,true,true,true,true,false,false,false,false
+-105.8474,39.0807,Tomahawk SWA Parking 04,South Platte btwn Hartsel & Fairplay,true,false,false,true,false,true,false,true,true,true,true,true,true,false,false,false,false
+-105.4027,40.87936,North Fork Poudre River,"Entrance, Need to 4x4 back into trailhead",true,false,false,true,false,false,true,true,true,true,true,true,false,false,false,false,false
+-105.5612,40.8901,Cherokee Park,Long drive for one day. Latest notes: 20190825,true,false,false,true,false,false,true,true,true,true,true,true,false,true,true,false,false
+-105.57883,40.86323,Creedmore Lakes,"Went 20200525. Small-ish trout, a good amount of people",true,true,false,true,false,false,true,true,true,false,true,true,false,true,true,false,false
+-105.661811,40.54268,Emmaline Lake,"Easy Hike for first half, camping, then harder hike to lake",true,true,false,true,false,true,true,true,true,false,true,true,false,false,true,false,false
+-105.584462,40.576429,Emmaline Lake Trailhead,"Easy Hike for first half, camping, then harder hike to lake",true,true,false,true,false,true,true,true,true,false,true,true,false,false,true,false,false
+-105.6735,39.9214,Forest Lakes,Access off Rollins Pass Road for shorter hike,true,true,false,true,true,false,true,true,true,false,true,true,false,true,true,false,false
+-105.6753,39.8975,Crater Lakes,,true,true,false,true,true,false,true,true,true,false,true,true,false,true,true,false,false
+-107.0907,39.8999,South Fork Derby Creek,Along trail/road to Mackinaw Lake. Road is a bit of a beast.,false,false,false,false,true,false,true,true,true,false,true,true,false,false,true,false,false
+-106.145433,39.539468,Officers Gulch,Ice fishing/ quick trout fishing,true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
+-106.329387,39.081412,Twin Lakes,"Ice fishing, lake trout, tough to find",true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
+-106.3752,39.269565,Tourquise Lake,"Ice Fishing, lake trout on the backside if you wanna hike it",true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
+-105.904914,38.98422,Antero Reservoir,"Ice Fishing, flat basin, can be tough to fish",true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
+-105.610304,39.230195,Tarryall Reservoir,Ice Fishing keep to weedline right off landings,true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
+-105.46596,40.47742,Dunraven Trailhead,North Fork of Big Thompson,true,false,true,false,false,true,true,true,true,false,true,true,false,false,true,false,false
+-106.862455,40.499072,Steamboat - North Town,Some big holes at entrance and upstream. Latest notes: 20190829,true,false,false,true,false,true,false,true,false,false,true,true,false,false,false,false,false
+-106.828921,40.460783,Steamboat - South Town,Fish the bend and the riffles upstream. Latest notes: 20190829,true,false,false,true,false,true,false,true,false,false,true,true,false,false,false,false,false
+-106.805942,40.299686,Sarvis Creek SWA,"Water downstream, as soon as it is public off road. Latest notes: 20190829",true,false,false,true,false,true,false,true,false,false,true,true,false,true,false,false,false
+-106.654085,40.454108,Lost Lake,Got into big Cutties. Latest notes: 20190829,true,true,false,true,false,false,true,true,true,false,true,true,false,true,true,false,false
+-105.442028,40.12425,Ceran St Vrain,"Trail along river, few fishermen",true,false,true,false,false,true,true,true,true,false,true,true,false,false,true,false,false
+-105.387056,40.27975,West Fork Little Thompson River,Tailwater of Button Rock Reservoir,true,false,true,false,false,true,true,true,false,true,true,true,true,false,false,false,false
+-105.6841,40.5802,Comanche Lake,Bings kids caught lunkers on 9/29/19 with salmon eggs. Cuts and Browns,true,true,false,true,false,false,true,true,true,false,true,true,false,false,true,false,false
+-105.3271,39.631809,Evergreen Lake,"Ice fishing, havent tried yet",true,true,false,true,false,true,false,true,true,true,true,true,true,false,false,false,true
+-105.862119,39.454122,Jefferson Lake,"Lakers, Ice fishing",true,true,false,true,false,true,false,true,true,true,true,true,true,false,true,false,true
+-105.3713457,39.9374013,Gross Reservoir - East side,"Hike-to fishing, havent actaully fished it yet",true,true,true,false,false,true,true,true,true,true,true,true,true,false,true,false,true
+-105.3691022,39.9485766,Gross Reservoir - West side,"Hike-to fishing, havent actaully fished it yet",true,true,true,false,false,true,true,true,true,true,true,true,true,false,true,false,true
+-105.344104,39.941808,South Boulder Creek - Gross Res,"Short hike, some people",false,false,true,false,false,true,true,true,false,true,true,true,true,false,false,false,false
+-105.7507,39.3057,Tarryall River. Public Access. Gorge,Small chunk of public access. Paved parking. Fish the gorge. ,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.6586,39.2528,Tarryall River SWA,Water access N or Reservoir,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.6261,39.2374,Terryall River N Gate Access,Look for green gate,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.6202,39.2365,Terryall River S Gate Access,Look for green gate,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.5535,39.1981,"Terryall River, Public Access. N of fish resort","Ute Trailhead. Upstream of Fishing Camp, big fish potential",true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.5201,39.1739,"Terryall River, Public Access. Corner of Public","Small block of public to acces, follow and stay inside fences",true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.4801,39.1475,"Terryall River, Public Access",Park off forest road. Can also pay to park in Twin Eagles CG,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.4635,39.1334,"Terryall River, Public Access",Park off forest road. Can also pay to park in Twin Eagles CG,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.4517,39.1241,4X4 Terryall River Access. FR 204,Roughly 3/4 mile down the Forest Road,true,false,false,true,false,false,false,true,true,true,true,true,false,true,true,false,false
+-105.176708,40.183374,Pella Crossing,"From shore/SUP fishing. Go during week, earlier in the seaon",true,true,true,false,false,true,false,true,false,true,true,true,true,false,false,false,false
+-105.132042,40.386514,Boedecker Lake,"Close to Loveland, crappies at east end in the spring? ",true,true,true,false,false,true,false,true,false,true,true,true,true,false,false,false,true
+-105.3504,40.76702,Lone Pine Creek,Small creek above Poudre Canyon - have not fished yet,,false,false,true,false,true,true,true,true,true,true,true,false,false,true,false,true
+-105.5056,39.2993,North Fork Lost Creek,Backpacking fishing access. Tons of brookies,true,false,false,true,false,true,true,true,true,true,true,true,false,false,true,false,true
+-105.7386,39.0179,Badger Basin SWA Access,Confluence of lots of water,true,false,false,true,false,true,true,true,true,true,true,true,false,false,true,false,true
+-105.7091,39.0087,Badger Basin SWA Access,,true,false,false,true,false,true,true,true,true,true,true,true,false,false,true,false,true
+-105.5063,39.2839,Lost Creek - Fish all along the road,,true,false,false,true,false,true,true,true,true,true,true,true,false,false,true,false,true
+-106.0561,39.0817,Rough and Tumbling Creek,Alpine plains headwaters - have not fished yet,true,false,false,true,false,true,true,true,true,false,true,true,false,true,true,false,false
+-106.003728,39.221925,The Beach - Fairplay,"South Platte and Westerman Ditch dump into the res, good dumb fish",true,false,false,true,false,true,false,true,false,true,true,true,true,true,false,false,false
+-105.353986,39.026353,Wildcat Canyon - South Platte,2.2 Mile hike in (~75 mins) Good fishing just about everywhere,true,false,false,true,false,true,true,true,true,true,true,true,false,true,true,false,false
+-106.8665,40.7355,Elk River,https://thecatchandthehatch.com/3-of-colorados-best-kept-fly-fishing-secrets/ Mid July thru fall,true,false,false,false,true,true,false,true,false,false,true,true,false,true,true,false,false
+-106.414537,38.803688,Lost Lake - Cottonwood Pass,"1.2 mile hike in. Fishing in Backcountry Book. 6-16"" Cutts",true,true,false,true,false,true,true,true,true,false,true,true,true,false,true,false,true
+-107.0447,40.1607,Allen Basin Reservoir,Rainbows,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.287,40.0474,Anderson Reservoir,"Can freeze out. Stocked with Cutts/ Fishing is best early, before lilly pads take over",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.5498,39.9652,Bailey Lake,"12"" Brookies. Tigers",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.6474,39.9771,Big Beaver Reservoir,Stocked Rainbows and Cutts. Produces Lunkers,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2802,40.0156,Big Fish Creek,Brookies. Rainbows. Cutts,true,false,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2896,39.9896,Big Fish Lake,"12"" Brookies. Cutts",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2212,39.9922,Coffin Lake,"Stubborn Cutts. ~16""",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2396,39.9966,Crescent Lake,"Many 5-7"" Cutts",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.0559,40.1728,Crosho Lake,Greyling and Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2289,40.0677,Deep Lake,"12"" Brookies",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.22,40.0669,East Lost Lake,"~16"" Cutts",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3713,39.9964,Guthrie Lake,Not stocked regularily. Brookies and Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2093,39.99,Little Trappers Lake,"Swampy shore, bring waders",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.4167,39.9777,Marvine Creek,,true,false,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3743,39.9402,Marvine Lake,"Willow Choked Shorelines. 10-12"" Brookies. Bigger Cutts",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3471,39.9789,Mary Loch Lake,Brookies and Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2039,40.0288,McGuinnis Lake,Brookies and Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3396,40.0271,Mirror Lake,Small Brookies. Tigers,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.4179,39.9539,Murphy Lake,Stocked with Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2383,40.0125,N Fork White River,"Plenty of Brookies, Rainbows, Cutts",true,false,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.5236,39.9276,Peltier Lake,Brookies,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3826,39.9499,Pine Isle Lake,"Best fish early, still snow around banks. 12-13"" Rainbows",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.6946,39.9501,Public Access White River,,true,false,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3896,39.9525,Ruby Lake,"16"" Cutts",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3658,40.0405,Sable Lake,"12-15"" Cutts",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.3341,40.034,Shamrock Lake,Smaller Brookies,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2114,40.0342,Skinny Fish Lake,"Bigger Brookies, need SUP or float to get to them",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.7056,39.948,Sleepy Cat Ponds & River Access,,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.4091,39.963,Slide Lake,Brookies. Rainbows. Some Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.545,39.9658,Swede Lake,Brookies. Tiger. Recently Stocked with Cuts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2299,39.9799,Trappers Lake,"Fish North End (shallower) 13-15"" Nearly Pure Strain Colorado River Cutts. 15"" Brookies",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2085,40.0401,Upper Skinny Fish Lake,Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-107.2366,40.073,West Lost Lake,"Stubborn 12-15"" Brookies",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
+-106.896955,40.582234,Christina SWA - Elk River,https://cpw.state.co.us/learn/Maps/ChristinaSWA_geo.pdf look into access of the south portion,true,false,false,true,true,true,false,true,false,false,true,true,false,true,true,false,false
+-106.995159,40.84148,Hans Peak Lake,"Fee area, good fish, check adventure notes for specs",true,true,false,false,true,true,false,true,false,true,true,true,true,true,false,true,true
+-106.888617,40.791189,Pearl Lake State Park,"State Park, only fished one evening",true,true,false,false,true,true,false,true,false,true,true,true,true,true,false,true,true

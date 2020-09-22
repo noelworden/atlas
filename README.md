@@ -3,6 +3,7 @@
 ##### A sandboxing Elixir/Phoenix app built around a growing database of my favorite places in Colorado 
 
 ![Elixir CI](https://github.com/noelworden/atlas/workflows/Elixir%20CI/badge.svg)
+
 ----
 ## Spinning up project with Docker
   - Install [Docker for Mac](https://docs.docker.com/docker-for-mac/install/)
@@ -12,6 +13,12 @@
   - In a second tab, once the two commands in the first tab are completed:  
     - `docker-compose exec web mix ecto.setup`
   - If everything spins up with no errors, site will be live at [localhost:4000](http://localhost:4000)
+----
+## Run seeds
+  - The `seeds.exs` file is executed in the `ecto.setup` `mix` command, in the steps above
+  - If the seeds need to be run again, it can be done with the following command:
+    - `docker-compose exec web mix run priv/repo/seeds.exs`
+
 ----
 ## `run` vs `exec`
 
