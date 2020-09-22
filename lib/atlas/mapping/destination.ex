@@ -61,7 +61,6 @@ defmodule Atlas.Mapping.Destination do
       :longitude,
       :latitude,
       :name,
-      :description,
       :spinner_friendly,
       :lake,
       :less_than_one_hour,
