@@ -18,7 +18,7 @@
   <%= error_tag f, :name %>
 
   <%= label f, :description %>
-  <%= text_input f, :description %>
+  <%= textarea f, :description %>
   <%= error_tag f, :description %>
 
   <%= label f, :spinner_friendly %>
@@ -90,6 +90,6 @@
   <%= error_tag f, :ice_fishing %>
 
   <div>
-    <%= submit "Save" %>
+    <%= submit "Save"%>
   </div>
 <% end %>

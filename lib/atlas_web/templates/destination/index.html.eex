@@ -1,66 +1,48 @@
-<h1>Listing Destinations</h1>
+<h1><%= page_title(@filter) %> Destinations</h1>
+
+<span><%= link "Create New Destination", to: Routes.destination_path(@conn, :new) %></span>
+
+<br></br>
 
 <table>
   <thead>
     <tr>
-      <th>Longitude</th>
-      <th>Latitude</th>
       <th>Name</th>
-      <th>Description</th>
-      <th>Spinner friendly</th>
+      <th>Spinner</th>
       <th>Lake</th>
-      <th>Less than one hour</th>
-      <th>One to three hours</th>
-      <th>Greater than three hours</th>
-      <th>Car friendly</th>
-      <th>Hike in</th>
-      <th>Allows dogs</th>
-      <th>Dogs off leash</th>
-      <th>Season spring</th>
-      <th>Season summer</th>
-      <th>Season fall</th>
-      <th>Season winter</th>
-      <th>Car camp</th>
-      <th>Backpack camp</th>
+      <th>Drive</th>
+      <th>Vehicle</th>
+      <th>Hike</th>
+      <th>Dogs</th>
+      <th>Camping</th>
       <th>Fee</th>
-      <th>Ice fishing</th>
-
       <th></th>
     </tr>
   </thead>
   <tbody>
 <%= for destination <- @destinations do %>
     <tr>
-      <td><%= destination.longitude %></td>
-      <td><%= destination.latitude %></td>
-      <td><%= destination.name %></td>
-      <td><%= destination.description %></td>
+      <td><%= link "#{destination.name}", to: Routes.destination_path(@conn, :show, destination)  %></td>
       <td><%= destination.spinner_friendly %></td>
       <td><%= destination.lake %></td>
-      <td><%= destination.less_than_one_hour %></td>
-      <td><%= destination.one_to_three_hours %></td>
-      <td><%= destination.greater_than_three_hours %></td>
-      <td><%= destination.car_friendly %></td>
-      <td><%= destination.hike_in %></td>
-      <td><%= destination.allows_dogs %></td>
-      <td><%= destination.dogs_off_leash %></td>
-      <td><%= destination.season_spring %></td>
-      <td><%= destination.season_summer %></td>
-      <td><%= destination.season_fall %></td>
-      <td><%= destination.season_winter %></td>
-      <td><%= destination.car_camp %></td>
-      <td><%= destination.backpack_camp %></td>
-      <td><%= destination.fee %></td>
-      <td><%= destination.ice_fishing %></td>
-
       <td>
-        <span><%= link "Show", to: Routes.destination_path(@conn, :show, destination) %></span>
-        <span><%= link "Edit", to: Routes.destination_path(@conn, :edit, destination) %></span>
+        <%= display_distance(
+                              destination.less_than_one_hour,
+                              destination.one_to_three_hours,
+                              destination.greater_than_three_hours)
+        %>
+      </td>
+      <td><%= vehicle_options(destination.car_friendly) %></td>
+      <td><%= destination.hike_in %></td>
+      <td><%= dog_options(destination.allows_dogs, destination.dogs_off_leash) %></td>
+      <td><%= camp_options(destination.car_camp, destination.backpack_camp) %></td>
+      <td><%= destination.fee %></td>
+      <td>
+        <span><%= link "Edit", to: Routes.destination_path(@conn, :edit, destination, filter: @filter) %></span>
+        ||
         <span><%= link "Delete", to: Routes.destination_path(@conn, :delete, destination), method: :delete, data: [confirm: "Are you sure?"] %></span>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-
-<span><%= link "New Destination", to: Routes.destination_path(@conn, :new) %></span>

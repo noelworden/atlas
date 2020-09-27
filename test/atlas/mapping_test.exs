@@ -29,6 +29,301 @@ defmodule Atlas.MappingTest do
       season_winter: true,
       spinner_friendly: true
     }
+
+    @valid_multi_attrs [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: false,
+        season_summer: false,
+        season_winter: false,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_one_summer [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: true,
+        season_winter: false,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_one_spring [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: false,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: true,
+        season_summer: false,
+        season_winter: false,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_one_fall [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: true,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: false,
+        season_summer: false,
+        season_winter: false,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_one_winter [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: true,
+        season_winter: false,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_one_ice [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: false,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: true,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      }
+    ]
+
     @update_attrs %{
       allows_dogs: false,
       backpack_camp: false,
@@ -76,7 +371,7 @@ defmodule Atlas.MappingTest do
       spinner_friendly: nil
     }
 
-    def destination_fixture(attrs \\ %{}) do
+    def single_destination_fixture(attrs \\ %{}) do
       {:ok, destination} =
         attrs
         |> Enum.into(@valid_attrs)
@@ -85,13 +380,42 @@ defmodule Atlas.MappingTest do
       destination
     end
 
-    test "list_destinations/0 returns all destinations" do
-      destination = destination_fixture()
-      assert Mapping.list_destinations() == [destination]
+    def multi_destination_fixture(valid_mulit_attrs) do
+      Enum.each(valid_mulit_attrs, &Mapping.create_destination(&1))
+    end
+
+    test "list_destinations/1 returns all unfiltered destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      assert Enum.count(Mapping.list_destinations("none")) == 2
+    end
+
+    test "list_destinations/1 returns one summer destination" do
+      multi_destination_fixture(@valid_multi_attrs_one_summer)
+      assert Enum.count(Mapping.list_destinations("summer")) == 1
+    end
+
+    test "list_destinations/1 returns one spring destination" do
+      multi_destination_fixture(@valid_multi_attrs_one_spring)
+      assert Enum.count(Mapping.list_destinations("spring")) == 1
+    end
+
+    test "list_destinations/1 returns one fall destination" do
+      multi_destination_fixture(@valid_multi_attrs_one_fall)
+      assert Enum.count(Mapping.list_destinations("fall")) == 1
+    end
+
+    test "list_destinations/1 returns one winter destination" do
+      multi_destination_fixture(@valid_multi_attrs_one_winter)
+      assert Enum.count(Mapping.list_destinations("winter")) == 1
+    end
+
+    test "list_destinations/1 returns one ice destination" do
+      multi_destination_fixture(@valid_multi_attrs_one_ice)
+      assert Enum.count(Mapping.list_destinations("ice")) == 1
     end
 
     test "get_destination!/1 returns the destination with given id" do
-      destination = destination_fixture()
+      destination = single_destination_fixture()
       assert Mapping.get_destination!(destination.id) == destination
     end
 
@@ -125,7 +449,7 @@ defmodule Atlas.MappingTest do
     end
 
     test "update_destination/2 with valid data updates the destination" do
-      destination = destination_fixture()
+      destination = single_destination_fixture()
 
       assert {:ok, %Destination{} = destination} =
                Mapping.update_destination(destination, @update_attrs)
@@ -154,19 +478,19 @@ defmodule Atlas.MappingTest do
     end
 
     test "update_destination/2 with invalid data returns error changeset" do
-      destination = destination_fixture()
+      destination = single_destination_fixture()
       assert {:error, %Ecto.Changeset{}} = Mapping.update_destination(destination, @invalid_attrs)
       assert destination == Mapping.get_destination!(destination.id)
     end
 
     test "delete_destination/1 deletes the destination" do
-      destination = destination_fixture()
+      destination = single_destination_fixture()
       assert {:ok, %Destination{}} = Mapping.delete_destination(destination)
       assert_raise Ecto.NoResultsError, fn -> Mapping.get_destination!(destination.id) end
     end
 
     test "change_destination/1 returns a destination changeset" do
-      destination = destination_fixture()
+      destination = single_destination_fixture()
       assert %Ecto.Changeset{} = Mapping.change_destination(destination)
     end
   end
