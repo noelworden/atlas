@@ -28,6 +28,10 @@ select {
   width: auto;
 }
 
+.map-container{
+  max-width: 200px;
+}
+
 /* Phoenix promo and logo */
 .phx-hero {
   text-align: center;
