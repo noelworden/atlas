@@ -1,5 +1,7 @@
 # Atlas
 
+/
+
 ##### A sandboxing Elixir/Phoenix app built around a growing database of my favorite places in Colorado 
 
 ![Elixir CI](https://github.com/noelworden/atlas/workflows/Elixir%20CI/badge.svg)
