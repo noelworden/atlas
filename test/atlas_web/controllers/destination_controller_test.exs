@@ -79,9 +79,34 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index" do
-    test "lists all destinations", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index))
-      assert html_response(conn, 200) =~ "Listing Destinations"
+    test "lists unfiltered destinations", %{conn: conn} do
+      conn = get(conn, Routes.destination_path(conn, :index, filter: :none))
+      assert html_response(conn, 200) =~ "All Destinations"
+    end
+
+    test "lists spring filtered destinations", %{conn: conn} do
+      conn = get(conn, Routes.destination_path(conn, :index, filter: :spring))
+      assert html_response(conn, 200) =~ "All Spring Destinations"
+    end
+
+    test "lists summer filtered destinations", %{conn: conn} do
+      conn = get(conn, Routes.destination_path(conn, :index, filter: :summer))
+      assert html_response(conn, 200) =~ "All Summer Destinations"
+    end
+
+    test "lists fall filtered destinations", %{conn: conn} do
+      conn = get(conn, Routes.destination_path(conn, :index, filter: :fall))
+      assert html_response(conn, 200) =~ "All Fall Destinations"
+    end
+
+    test "lists winter filtered destinations", %{conn: conn} do
+      conn = get(conn, Routes.destination_path(conn, :index, filter: :winter))
+      assert html_response(conn, 200) =~ "All Winter Destinations"
+    end
+
+    test "lists ice fishing filtered destinations", %{conn: conn} do
+      conn = get(conn, Routes.destination_path(conn, :index, filter: :ice))
+      assert html_response(conn, 200) =~ "All Ice Fishing Destinations"
     end
   end
 
@@ -112,7 +137,10 @@ defmodule AtlasWeb.DestinationControllerTest do
   describe "edit destination" do
     setup [:create_destination]
 
-    test "renders form for editing chosen destination", %{conn: conn, destination: destination} do
+    test "renders form for editing chosen destination", %{
+      conn: conn,
+      destination: destination
+    } do
       conn = get(conn, Routes.destination_path(conn, :edit, destination))
       assert html_response(conn, 200) =~ "Edit Destination"
     end
@@ -131,7 +159,10 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "some updated description"
     end
 
-    test "renders errors when data is invalid", %{conn: conn, destination: destination} do
+    test "renders errors when data is invalid", %{
+      conn: conn,
+      destination: destination
+    } do
       conn =
         put(conn, Routes.destination_path(conn, :update, destination), destination: @invalid_attrs)
 

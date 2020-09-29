@@ -4,9 +4,9 @@ defmodule AtlasWeb.DestinationController do
   alias Atlas.Mapping
   alias Atlas.Mapping.Destination
 
-  def index(conn, _params) do
-    destinations = Mapping.list_destinations()
-    render(conn, "index.html", destinations: destinations)
+  def index(conn, %{"filter" => filter}) do
+    destinations = Mapping.list_destinations(filter)
+    render(conn, "index.html", destinations: destinations, filter: filter)
   end
 
   def new(conn, _params) do

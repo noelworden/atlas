@@ -1,37 +1,41 @@
-<section class="phx-hero">
-  <h1><%= gettext "Welcome to %{name}!", name: "Phoenix" %></h1>
-  <p>Peace of mind from prototype to production</p>
-</section>
-
 <section class="row">
   <article class="column">
-    <h2>Resources</h2>
     <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.5/CHANGELOG.md">v1.5 Changelog</a>
-      </li>
+      <%= link "Create New Destination", to: Routes.destination_path(@conn, :new)%></a>
     </ul>
   </article>
   <article class="column">
-    <h2>Help</h2>
+    <h2>View Destinations</h2>
     <ul>
       <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+        <%= link "All Destinations",
+            to: Routes.destination_path(@conn, :index, filter: :none)
+        %>
       </li>
       <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+        <%= link "All Spring Destinations",
+            to: Routes.destination_path(@conn, :index, filter: :spring)
+        %>
       </li>
       <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+        <%= link "All Summer Destinations",
+            to: Routes.destination_path(@conn, :index, filter: :summer)
+        %>
       </li>
       <li>
-        <a href="https://elixir-slackin.herokuapp.com/">Elixir on Slack</a>
+        <%= link "All Fall Destinations",
+            to: Routes.destination_path(@conn, :index, filter: :fall)
+        %>
+      </li>
+      <li>
+        <%= link "All Winter Destinations",
+            to: Routes.destination_path(@conn, :index, filter: :winter)
+        %>
+      </li>
+      <li>
+        <%= link "All Ice Fishing Destinations",
+            to: Routes.destination_path(@conn, :index, filter: :ice)
+        %>
       </li>
     </ul>
   </article>

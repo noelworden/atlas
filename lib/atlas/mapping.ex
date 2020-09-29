@@ -8,8 +8,16 @@ defmodule Atlas.Mapping do
 
   alias Atlas.Mapping.Destination
 
-  def list_destinations do
-    Repo.all(Destination)
+  def list_destinations(filter) do
+    # Can this be refactored?
+    case filter do
+      "spring" -> Repo.all(from(d in Destination, where: d.season_spring))
+      "summer" -> Repo.all(from(d in Destination, where: d.season_summer))
+      "fall" -> Repo.all(from(d in Destination, where: d.season_fall))
+      "winter" -> Repo.all(from(d in Destination, where: d.season_winter))
+      "ice" -> Repo.all(from(d in Destination, where: d.ice_fishing))
+      _ -> Repo.all(Destination)
+    end
   end
 
   def get_destination!(id), do: Repo.get!(Destination, id)
