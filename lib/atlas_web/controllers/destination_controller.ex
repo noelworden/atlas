@@ -57,6 +57,6 @@ defmodule AtlasWeb.DestinationController do
 
     conn
     |> put_flash(:info, "Destination deleted successfully.")
-    |> redirect(to: Routes.destination_path(conn, :index))
+    |> redirect(to: "/")
   end
 end

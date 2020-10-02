@@ -175,7 +175,7 @@ defmodule AtlasWeb.DestinationControllerTest do
 
     test "deletes chosen destination", %{conn: conn, destination: destination} do
       conn = delete(conn, Routes.destination_path(conn, :delete, destination))
-      assert redirected_to(conn) == Routes.destination_path(conn, :index)
+      assert redirected_to(conn) == "/"
 
       assert_error_sent 404, fn ->
         get(conn, Routes.destination_path(conn, :show, destination))
