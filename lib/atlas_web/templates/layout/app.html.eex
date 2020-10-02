@@ -11,12 +11,12 @@
   <body>
     <header>
       <section class="container">
-        <nav role="navigation">
-          <ul>
-            <li><a href="/">Home</a></li>
-          </ul>
-        </nav>
-        <h1>Angling Atlas</h1>
+        <div>
+          <span><a href="/">Home</a></span>
+          ||
+          <span><%= link "Create Another Destination", to: Routes.destination_path(@conn, :new) %></span>
+        </div>
+          <h1>Angling Atlas</h1>
       </section>
     </header>
     <main role="main" class="container">
