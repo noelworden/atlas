@@ -1,5 +1,6 @@
 /* This file is for your main application css. */
 @import "./phoenix.css";
+@import "./open_layers.css";
 
 /* Alerts and form errors */
 .alert {
@@ -33,4 +34,17 @@
   color: #a94442;
   display: block;
   margin: -1rem 0 2rem;
+}
+
+.map--small{
+  height: 50rem;
+  margin: 2rem 0;
+  width: 50rem;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+.list-items--show{
+  margin: auto;
 }
