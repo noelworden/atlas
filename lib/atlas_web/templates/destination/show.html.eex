@@ -119,6 +119,14 @@
 
     </div>
   </div>
+  <span>
+    <%=
+      link "Get directions",
+      to: "http://maps.google.com/?q=#{@destination.latitude},#{@destination.longitude}",
+      target: "_blank"
+    %>
+  </span>
+  ||
   <span><%= link "Edit", to: Routes.destination_path(@conn, :edit, @destination) %></span>
   ||
   <span><%= link "Delete", to: Routes.destination_path(@conn, :delete, @destination), method: :delete, data: [confirm: "Are you sure you want to delete #{@destination.name}?"] %></span>
