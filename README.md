@@ -63,9 +63,8 @@ To run only a specific test within a test file:
   - It should be noted that the docs are _very_ good, and searchable
   - Once the CLI is installed, `gigalixir help` is also very detailed
 
-### Project URLs
-  - https://atlas-staging.gigalixirapp.com/
-  - https://atlas-production.gigalixirapp.com/
+### Project URL
+  - https://atlas.gigalixirapp.com/
 
 ### Install Gigalixir CLI (with homebrew)
   - `brew tap gigalixir/brew && brew install gigalixir`
