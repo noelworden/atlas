@@ -26,6 +26,7 @@ services:
       - ./mix.exs:/app/mix.exs
       - ./mix.lock:/app/mix.lock
       - ./test:/app/test
+      - ./.iex.exs:/app/.iex.exs
     depends_on:
       # The `db` container needs to be started before `web` is started
       - db

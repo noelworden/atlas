@@ -38,3 +38,6 @@ npm-debug.log
 
 # Don't need to include Mac's metadata files
 .DS_Store
+
+# Ignore the IEx shell preference file, allowing users to modify to their personal needs
+.iex.exs
