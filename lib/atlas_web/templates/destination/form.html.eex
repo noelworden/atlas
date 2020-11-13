@@ -6,10 +6,20 @@
   <% end %>
 
   <%= label f, :longitude %>
+  <div>
+    <small>
+      Should be a negative number, for Colorado, in the -102 / -108 range
+    </small>
+  </div>
   <%= number_input f, :longitude, step: "any" %>
   <%= error_tag f, :longitude %>
 
   <%= label f, :latitude %>
+  <div>
+    <small>
+      Should be a positive number, for Colorado, in the 37 / 41 range
+    </small>
+  </div>
   <%= number_input f, :latitude, step: "any" %>
   <%= error_tag f, :latitude %>
 
