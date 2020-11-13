@@ -48,7 +48,7 @@ longitude,latitude,name,description,spinner_friendly,lake,less_than_one_hour,one
 -105.3713457,39.9374013,Gross Reservoir - East side,"Hike-to fishing, havent actaully fished it yet",true,true,true,false,false,true,true,true,true,true,true,true,true,false,true,false,true
 -105.3691022,39.9485766,Gross Reservoir - West side,"Hike-to fishing, havent actaully fished it yet",true,true,true,false,false,true,true,true,true,true,true,true,true,false,true,false,true
 -105.344104,39.941808,South Boulder Creek - Gross Res,"Short hike, some people",false,false,true,false,false,true,true,true,false,true,true,true,true,false,false,false,false
--105.7507,39.3057,Tarryall River. Public Access. Gorge,Small chunk of public access. Paved parking. Fish the gorge. ,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
+-105.7507,39.3057,Tarryall River. Public Access. Gorge,"Small chunk of public access. Paved parking. Fish the gorge. ",true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
 -105.6586,39.2528,Tarryall River SWA,Water access N or Reservoir,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
 -105.6261,39.2374,Terryall River N Gate Access,Look for green gate,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
 -105.6202,39.2365,Terryall River S Gate Access,Look for green gate,true,false,false,true,false,true,false,true,true,true,true,true,false,true,true,false,false
@@ -105,3 +105,7 @@ longitude,latitude,name,description,spinner_friendly,lake,less_than_one_hour,one
 -106.896955,40.582234,Christina SWA - Elk River,https://cpw.state.co.us/learn/Maps/ChristinaSWA_geo.pdf look into access of the south portion,true,false,false,true,true,true,false,true,false,false,true,true,false,true,true,false,false
 -106.995159,40.84148,Hans Peak Lake,"Fee area, good fish, check adventure notes for specs",true,true,false,false,true,true,false,true,false,true,true,true,true,true,false,true,true
 -106.888617,40.791189,Pearl Lake State Park,"State Park, only fished one evening",true,true,false,false,true,true,false,true,false,true,true,true,true,true,false,true,true
+-107.85963,38.77112,Gunnison River Spot 01,"Fished on 20201010, tough day, but holds fish. On the cusp of too burly for car.",true,false,false,false,true,true,false,true,true,true,true,true,false,true,false,false,false
+-107.88021,38.76632,Gunnision River Spot 02,"Saw when fishing other spots, looked solid. 6+ fisherman in afternoon.",true,false,false,false,true,true,false,true,true,true,true,true,false,true,false,false,false
+-107.85490,38.77201,Gunnison River Spot 03,"Just saw from arial maps, seemed promising",true,false,false,false,true,true,false,true,true,true,true,true,false,true,false,false,false
+-107.85342,38.77771,Gunnisoin River Spot 04,"Just saw from arial maps, seemed promising",true,false,false,false,true,true,false,true,true,true,true,true,false,true,false,false,false
