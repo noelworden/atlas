@@ -20,7 +20,7 @@ defmodule Atlas.MappingTest do
       lake: true,
       latitude: "120.5",
       less_than_one_hour: true,
-      longitude: "120.5",
+      longitude: "-120.5",
       name: "some name",
       one_to_three_hours: true,
       season_fall: true,
@@ -45,7 +45,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -68,7 +68,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -94,7 +94,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -117,7 +117,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -143,7 +143,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -166,7 +166,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -192,7 +192,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -215,7 +215,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -241,7 +241,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -264,7 +264,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -290,7 +290,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -313,7 +313,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -338,7 +338,7 @@ defmodule Atlas.MappingTest do
       lake: false,
       latitude: "456.7",
       less_than_one_hour: false,
-      longitude: "456.7",
+      longitude: "-456.7",
       name: "some updated name",
       one_to_three_hours: false,
       season_fall: false,
@@ -434,7 +434,7 @@ defmodule Atlas.MappingTest do
       assert destination.lake == true
       assert destination.latitude == Decimal.new("120.5")
       assert destination.less_than_one_hour == true
-      assert destination.longitude == Decimal.new("120.5")
+      assert destination.longitude == Decimal.new("-120.5")
       assert destination.name == "some name"
       assert destination.one_to_three_hours == true
       assert destination.season_fall == true
@@ -467,7 +467,7 @@ defmodule Atlas.MappingTest do
       assert destination.lake == false
       assert destination.latitude == Decimal.new("456.7")
       assert destination.less_than_one_hour == false
-      assert destination.longitude == Decimal.new("456.7")
+      assert destination.longitude == Decimal.new("-456.7")
       assert destination.name == "some updated name"
       assert destination.one_to_three_hours == false
       assert destination.season_fall == false
