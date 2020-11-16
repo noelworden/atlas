@@ -419,6 +419,106 @@ defmodule Atlas.MappingTest do
       assert Mapping.get_destination!(destination.id) == destination
     end
 
+    test "get_coordinates/1 returns string of empty list if no destinations are present" do
+      listed_destinations = Mapping.list_destinations("none")
+      assert Mapping.get_coordinates(listed_destinations) == "[]"
+    end
+
+    test "get_coordinates/1 returns long/lat coordinates of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+
+      assert Mapping.get_coordinates(listed_destinations) ==
+               "[[#{destination.longitude},#{destination.latitude}]]"
+    end
+
+    test "get_coordinates/1 returns long/lat coordinates of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.get_coordinates(listed_destinations) ==
+               "[[#{first_destination.longitude},#{first_destination.latitude}],[#{
+                 second_destination.longitude
+               },#{second_destination.latitude}]]"
+    end
+
+    test "find_median_coordinates/2 returns default longitude coordinate if no destinations are present" do
+      assert Mapping.find_median_coordinates(:longitude, []) == -105.101
+    end
+
+    test "find_median_coordinates/2 returns default latitude coordinate if no destinations are present" do
+      assert Mapping.find_median_coordinates(:latitude, []) == 40.135
+    end
+
+    test "find_median_coordinates/2 returns longitude of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+
+      assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
+               Decimal.to_float(destination.longitude)
+    end
+
+    test "find_median_coordinates/2 returns latitude of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+
+      assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
+               Decimal.to_float(destination.latitude)
+    end
+
+    test "find_median_coordinates/2 returns median longitude of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
+               Decimal.to_float(
+                 Decimal.div(
+                   Decimal.add(first_destination.longitude, second_destination.longitude),
+                   2
+                 )
+               )
+    end
+
+    test "find_median_coordinates/2 returns median latitude of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
+               Decimal.to_float(
+                 Decimal.div(
+                   Decimal.add(first_destination.latitude, second_destination.latitude),
+                   2
+                 )
+               )
+    end
+
+    test "get_names/1 returns string of empty list if no destinations are present" do
+      listed_destinations = Mapping.list_destinations("none")
+      assert Mapping.get_names(listed_destinations) == "[]"
+    end
+
+    test "get_names/1 returns string of list of single JSON converted name of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+      assert Mapping.get_names(listed_destinations) == "[[\"#{destination.name}\"]]"
+    end
+
+    test "get_names/1 returns string of list of JSON converted names of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.get_names(listed_destinations) ==
+               "[[\"#{first_destination.name}\"],[\"#{second_destination.name}\"]]"
+    end
+
     test "create_destination/1 with valid data creates a destination" do
       assert {:ok, %Destination{} = destination} = Mapping.create_destination(@valid_attrs)
       assert destination.allows_dogs == true
