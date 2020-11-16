@@ -1,5 +1,16 @@
 <h1><%= page_title(@filter) %> Destinations</h1>
-
+<div id="map" class="map--large">
+  <script>
+    window.Destination = {
+      coordinates: <%= raw @coordinates %>,
+      names: <%= raw @names %>,
+      source: "<%= Routes.static_path(@conn, "/icons/marker.svg") %>",
+      median_lat: <%= @median_lat %>,
+      median_long: <%= @median_long %>
+      }
+  </script>
+  <script type="text/javascript" src="/js/multiDestinationMap.js") %>"></script>
+</div>
 <span><%= link "Create New Destination", to: Routes.destination_path(@conn, :new) %></span>
 
 <br></br>
