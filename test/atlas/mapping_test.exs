@@ -380,8 +380,8 @@ defmodule Atlas.MappingTest do
       destination
     end
 
-    def multi_destination_fixture(valid_mulit_attrs) do
-      Enum.each(valid_mulit_attrs, &Mapping.create_destination(&1))
+    def multi_destination_fixture(valid_multi_attrs) do
+      Enum.each(valid_multi_attrs, &Mapping.create_destination(&1))
     end
 
     test "list_destinations/1 returns all unfiltered destinations" do
