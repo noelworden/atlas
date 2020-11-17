@@ -20,6 +20,53 @@ defmodule Atlas.Mapping do
     end
   end
 
+  def get_coordinates(destinations) do
+    destinations
+    |> Enum.map(fn destination ->
+      Map.take(destination, [:longitude, :latitude])
+      |> Map.values()
+      |> Enum.reverse()
+      |> Enum.map(fn coordinate -> Decimal.to_float(coordinate) end)
+    end)
+    |> Jason.encode()
+    |> elem(1)
+  end
+
+  # If no destinations are present, set long/lat to Longmont, CO
+  def find_median_coordinates(field, []) do
+    cond do
+      field == :longitude ->
+        -105.101
+
+      field == :latitude ->
+        40.135
+    end
+  end
+
+  def find_median_coordinates(field, destinations) do
+    total =
+      destinations
+      |> Enum.map(fn destination ->
+        Map.take(destination, [field])
+        |> Map.values()
+        |> Enum.map(fn coordinate -> Decimal.to_float(coordinate) end)
+      end)
+      |> List.flatten()
+      |> Enum.reduce(fn item, acc -> item + acc end)
+
+    total / Enum.count(destinations)
+  end
+
+  def get_names(destinations) do
+    destinations
+    |> Enum.map(fn destination ->
+      Map.take(destination, [:name])
+      |> Map.values()
+    end)
+    |> Jason.encode()
+    |> elem(1)
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do

@@ -20,7 +20,7 @@ defmodule Atlas.MappingTest do
       lake: true,
       latitude: "120.5",
       less_than_one_hour: true,
-      longitude: "120.5",
+      longitude: "-120.5",
       name: "some name",
       one_to_three_hours: true,
       season_fall: true,
@@ -45,7 +45,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -68,7 +68,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -94,7 +94,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -117,7 +117,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -143,7 +143,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -166,7 +166,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -192,7 +192,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -215,7 +215,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -241,7 +241,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -264,7 +264,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -290,7 +290,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.5",
         less_than_one_hour: true,
-        longitude: "120.5",
+        longitude: "-120.5",
         name: "some name",
         one_to_three_hours: true,
         season_fall: true,
@@ -313,7 +313,7 @@ defmodule Atlas.MappingTest do
         lake: true,
         latitude: "120.4",
         less_than_one_hour: true,
-        longitude: "120.4",
+        longitude: "-120.4",
         name: "some name",
         one_to_three_hours: true,
         season_fall: false,
@@ -338,7 +338,7 @@ defmodule Atlas.MappingTest do
       lake: false,
       latitude: "456.7",
       less_than_one_hour: false,
-      longitude: "456.7",
+      longitude: "-456.7",
       name: "some updated name",
       one_to_three_hours: false,
       season_fall: false,
@@ -380,8 +380,8 @@ defmodule Atlas.MappingTest do
       destination
     end
 
-    def multi_destination_fixture(valid_mulit_attrs) do
-      Enum.each(valid_mulit_attrs, &Mapping.create_destination(&1))
+    def multi_destination_fixture(valid_multi_attrs) do
+      Enum.each(valid_multi_attrs, &Mapping.create_destination(&1))
     end
 
     test "list_destinations/1 returns all unfiltered destinations" do
@@ -419,6 +419,106 @@ defmodule Atlas.MappingTest do
       assert Mapping.get_destination!(destination.id) == destination
     end
 
+    test "get_coordinates/1 returns string of empty list if no destinations are present" do
+      listed_destinations = Mapping.list_destinations("none")
+      assert Mapping.get_coordinates(listed_destinations) == "[]"
+    end
+
+    test "get_coordinates/1 returns long/lat coordinates of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+
+      assert Mapping.get_coordinates(listed_destinations) ==
+               "[[#{destination.longitude},#{destination.latitude}]]"
+    end
+
+    test "get_coordinates/1 returns long/lat coordinates of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.get_coordinates(listed_destinations) ==
+               "[[#{first_destination.longitude},#{first_destination.latitude}],[#{
+                 second_destination.longitude
+               },#{second_destination.latitude}]]"
+    end
+
+    test "find_median_coordinates/2 returns default longitude coordinate if no destinations are present" do
+      assert Mapping.find_median_coordinates(:longitude, []) == -105.101
+    end
+
+    test "find_median_coordinates/2 returns default latitude coordinate if no destinations are present" do
+      assert Mapping.find_median_coordinates(:latitude, []) == 40.135
+    end
+
+    test "find_median_coordinates/2 returns longitude of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+
+      assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
+               Decimal.to_float(destination.longitude)
+    end
+
+    test "find_median_coordinates/2 returns latitude of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+
+      assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
+               Decimal.to_float(destination.latitude)
+    end
+
+    test "find_median_coordinates/2 returns median longitude of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
+               Decimal.to_float(
+                 Decimal.div(
+                   Decimal.add(first_destination.longitude, second_destination.longitude),
+                   2
+                 )
+               )
+    end
+
+    test "find_median_coordinates/2 returns median latitude of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
+               Decimal.to_float(
+                 Decimal.div(
+                   Decimal.add(first_destination.latitude, second_destination.latitude),
+                   2
+                 )
+               )
+    end
+
+    test "get_names/1 returns string of empty list if no destinations are present" do
+      listed_destinations = Mapping.list_destinations("none")
+      assert Mapping.get_names(listed_destinations) == "[]"
+    end
+
+    test "get_names/1 returns string of list of single JSON converted name of single destination" do
+      destination = single_destination_fixture()
+      listed_destinations = Mapping.list_destinations("none")
+      assert Mapping.get_names(listed_destinations) == "[[\"#{destination.name}\"]]"
+    end
+
+    test "get_names/1 returns string of list of JSON converted names of multiple destinations" do
+      multi_destination_fixture(@valid_multi_attrs)
+      listed_destinations = Mapping.list_destinations("none")
+      first_destination = Enum.at(listed_destinations, 0)
+      second_destination = Enum.at(listed_destinations, 1)
+
+      assert Mapping.get_names(listed_destinations) ==
+               "[[\"#{first_destination.name}\"],[\"#{second_destination.name}\"]]"
+    end
+
     test "create_destination/1 with valid data creates a destination" do
       assert {:ok, %Destination{} = destination} = Mapping.create_destination(@valid_attrs)
       assert destination.allows_dogs == true
@@ -434,7 +534,7 @@ defmodule Atlas.MappingTest do
       assert destination.lake == true
       assert destination.latitude == Decimal.new("120.5")
       assert destination.less_than_one_hour == true
-      assert destination.longitude == Decimal.new("120.5")
+      assert destination.longitude == Decimal.new("-120.5")
       assert destination.name == "some name"
       assert destination.one_to_three_hours == true
       assert destination.season_fall == true
@@ -467,7 +567,7 @@ defmodule Atlas.MappingTest do
       assert destination.lake == false
       assert destination.latitude == Decimal.new("456.7")
       assert destination.less_than_one_hour == false
-      assert destination.longitude == Decimal.new("456.7")
+      assert destination.longitude == Decimal.new("-456.7")
       assert destination.name == "some updated name"
       assert destination.one_to_three_hours == false
       assert destination.season_fall == false

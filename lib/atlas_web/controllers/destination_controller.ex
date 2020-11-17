@@ -6,7 +6,19 @@ defmodule AtlasWeb.DestinationController do
 
   def index(conn, %{"filter" => filter}) do
     destinations = Mapping.list_destinations(filter)
-    render(conn, "index.html", destinations: destinations, filter: filter)
+    coordinates = Mapping.get_coordinates(destinations)
+    names = Mapping.get_names(destinations)
+    median_long = Mapping.find_median_coordinates(:longitude, destinations)
+    median_lat = Mapping.find_median_coordinates(:latitude, destinations)
+
+    render(conn, "index.html",
+      destinations: destinations,
+      filter: filter,
+      coordinates: coordinates,
+      names: names,
+      median_long: median_long,
+      median_lat: median_lat
+    )
   end
 
   def new(conn, _params) do
