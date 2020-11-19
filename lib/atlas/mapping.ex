@@ -29,7 +29,13 @@ defmodule Atlas.Mapping do
       |> Enum.map(fn coordinate -> Decimal.to_float(coordinate) end)
     end)
     |> Jason.encode()
-    |> elem(1)
+    |> case do
+      {:ok, result} ->
+        result
+
+      _ ->
+        "[]"
+    end
   end
 
   # If no destinations are present, set long/lat to Longmont, CO
@@ -64,7 +70,13 @@ defmodule Atlas.Mapping do
       |> Map.values()
     end)
     |> Jason.encode()
-    |> elem(1)
+    |> case do
+      {:ok, result} ->
+        result
+
+      _ ->
+        "[]"
+    end
   end
 
   def get_destination!(id), do: Repo.get!(Destination, id)
