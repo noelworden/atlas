@@ -1,7 +1,7 @@
 defmodule AtlasWeb.DestinationView do
   use AtlasWeb, :view
 
-  def page_title(filter) do
+  def page_title(filter \\ "") do
     case filter do
       "spring" -> "All Spring"
       "summer" -> "All Summer"
@@ -26,12 +26,12 @@ defmodule AtlasWeb.DestinationView do
       allows_dogs && dogs_off_leash -> "Off leash"
       allows_dogs && !dogs_off_leash -> "On leash"
       !allows_dogs -> "No dogs"
-      true -> "N/A"
     end
   end
 
   def camp_options(car, backpack) do
     cond do
+      car && backpack -> "Car or Backpack"
       car -> "Car"
       backpack -> "Backpack"
       true -> "None"
