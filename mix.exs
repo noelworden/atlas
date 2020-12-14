@@ -46,7 +46,7 @@ defmodule Atlas.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:nimble_csv, "~> 0.7"}
+      {:nimble_csv, "~> 1.1.0"}
     ]
   end
 
