@@ -1,7 +1,11 @@
 defmodule AtlasWeb.PageController do
   use AtlasWeb, :controller
 
+  alias Atlas.Mapping
+
   def index(conn, _params) do
-    render(conn, "index.html")
+    season_options = Mapping.season_options()
+    lake_options = Mapping.lake_options()
+    render(conn, "index.html", season_options: season_options, lake_options: lake_options)
   end
 end
