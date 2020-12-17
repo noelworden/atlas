@@ -1,4 +1,8 @@
-<h1><%= page_title(@filter) %> Destinations</h1>
+<h1>
+  All <%= page_title_season(@season)%>
+  <%= title_divider(@season, @lake)%>
+  <%= page_title_lake(@lake)%> Destinations
+</h1>
 <div id="map" class="map--large">
   <script>
     window.Destination = {

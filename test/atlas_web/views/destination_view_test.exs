@@ -3,33 +3,65 @@ defmodule AtlasWeb.DestinationViewTest do
 
   alias AtlasWeb.DestinationView
 
-  describe "page_title/1 returns correct string for title of page" do
+  describe "page_title_season/1 returns correct string for filtered season" do
     test "returns 'All Spring' when 'spring' is passed" do
-      assert DestinationView.page_title("spring") == "All Spring"
+      assert DestinationView.page_title_season("spring") == "Spring"
     end
 
     test "returns 'All Summer' when 'summer' is passed" do
-      assert DestinationView.page_title("summer") == "All Summer"
+      assert DestinationView.page_title_season("summer") == "Summer"
     end
 
     test "returns 'All Fall' when 'fall' is passed" do
-      assert DestinationView.page_title("fall") == "All Fall"
+      assert DestinationView.page_title_season("fall") == "Fall"
     end
 
     test "returns 'All Winter' when 'winter' is passed" do
-      assert DestinationView.page_title("winter") == "All Winter"
+      assert DestinationView.page_title_season("winter") == "Winter"
     end
 
     test "returns 'All Ice Fishing' when 'ice' is passed" do
-      assert DestinationView.page_title("ice") == "All Ice Fishing"
+      assert DestinationView.page_title_season("ice") == "Ice Fishing"
     end
 
-    test "returns 'All' when '' is passed" do
-      assert DestinationView.page_title("") == "All"
+    test "returns '' when '' is passed" do
+      assert DestinationView.page_title_season("") == ""
     end
 
-    test "returns 'All' when nothing is passed" do
-      assert DestinationView.page_title() == "All"
+    test "returns '' when nothing is passed" do
+      assert DestinationView.page_title_season() == ""
+    end
+  end
+
+  describe "page_title_lake/1 returns correct string for filtered lake" do
+    test "returns 'Lake' when 'true' is passed" do
+      assert DestinationView.page_title_lake(true) == "Lake"
+    end
+
+    test "returns 'River & Stream' when 'false' is passed" do
+      assert DestinationView.page_title_lake(false) == "River & Stream"
+    end
+
+    test "returns '' when '' is passed" do
+      assert DestinationView.page_title_lake("") == ""
+    end
+  end
+
+  describe "title_divider/2 returns correct string" do
+    test "returns '' if both arguments are ''" do
+      assert DestinationView.title_divider("", "") == ""
+    end
+
+    test "returns '' if second argument is ''" do
+      assert DestinationView.title_divider("none", "") == ""
+    end
+
+    test "returns '' if first argument is ''" do
+      assert DestinationView.title_divider("", true) == ""
+    end
+
+    test "returns ' / ' if neither of the arguments are ''" do
+      assert DestinationView.title_divider("spring", false) == " / "
     end
   end
 

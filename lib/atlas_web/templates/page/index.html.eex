@@ -1,42 +1,12 @@
-<section class="row">
-  <article class="column">
-    <ul>
-      <%= link "Create New Destination", to: Routes.destination_path(@conn, :new)%></a>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>View Destinations</h2>
-    <ul>
-      <li>
-        <%= link "All Destinations",
-            to: Routes.destination_path(@conn, :index, filter: :none)
-        %>
-      </li>
-      <li>
-        <%= link "All Spring Destinations",
-            to: Routes.destination_path(@conn, :index, filter: :spring)
-        %>
-      </li>
-      <li>
-        <%= link "All Summer Destinations",
-            to: Routes.destination_path(@conn, :index, filter: :summer)
-        %>
-      </li>
-      <li>
-        <%= link "All Fall Destinations",
-            to: Routes.destination_path(@conn, :index, filter: :fall)
-        %>
-      </li>
-      <li>
-        <%= link "All Winter Destinations",
-            to: Routes.destination_path(@conn, :index, filter: :winter)
-        %>
-      </li>
-      <li>
-        <%= link "All Ice Fishing Destinations",
-            to: Routes.destination_path(@conn, :index, filter: :ice)
-        %>
-      </li>
-    </ul>
-  </article>
-</section>
+<div class="flex" >
+  <div>
+    <%= link "Create New Destination", to: Routes.destination_path(@conn, :new)%></a>
+  </div>
+  <div>
+    <%= form_for @conn, Routes.destination_path(@conn, :index), [method: :get], fn f -> %>
+      <%= select(f, :season, @season_options, prompt: "Choose season", class: "filter-dropdown")%>
+      <%= select(f, :lake, @lake_options,  prompt: "Choose water type", class: "filter-dropdown--last")%>
+      <%= submit "Search"%>
+    <% end %>
+  </div>
+</div>
