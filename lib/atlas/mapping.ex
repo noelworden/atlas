@@ -4,19 +4,20 @@ defmodule Atlas.Mapping do
   """
 
   import Ecto.Query, warn: false
-  alias Atlas.Repo
+  alias Atlas.{Mapping.Destination, Repo}
 
-  alias Atlas.Mapping.Destination
+  def list_filtered_destinations(season, lake) do
+    Destination
+    |> season_filter(season)
+    |> lake_filter(lake)
+    |> Repo.all()
+  end
 
-  def list_destinations(filter) do
-    # Can this be refactored?
-    case filter do
-      "spring" -> Repo.all(from(d in Destination, where: d.season_spring))
-      "summer" -> Repo.all(from(d in Destination, where: d.season_summer))
-      "fall" -> Repo.all(from(d in Destination, where: d.season_fall))
-      "winter" -> Repo.all(from(d in Destination, where: d.season_winter))
-      "ice" -> Repo.all(from(d in Destination, where: d.ice_fishing))
-      _ -> Repo.all(Destination)
+  def string_to_boolean(string) do
+    case string do
+      "true" -> true
+      "false" -> false
+      _ -> ""
     end
   end
 
@@ -79,6 +80,23 @@ defmodule Atlas.Mapping do
     end
   end
 
+  def season_options do
+    [
+      {"Spring", "spring"},
+      {"Summer", "summer"},
+      {"Fall", "fall"},
+      {"Winter", "winter"},
+      {"Ice Fishing", "ice"}
+    ]
+  end
+
+  def lake_options do
+    [
+      {"Lake", true},
+      {"River & Stream", false}
+    ]
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do
@@ -99,5 +117,24 @@ defmodule Atlas.Mapping do
 
   def change_destination(%Destination{} = destination, attrs \\ %{}) do
     Destination.changeset(destination, attrs)
+  end
+
+  defp season_filter(query, season) do
+    case season do
+      "spring" -> from(d in query, where: d.season_spring)
+      "summer" -> from(d in query, where: d.season_summer)
+      "fall" -> from(d in query, where: d.season_fall)
+      "winter" -> from(d in query, where: d.season_winter)
+      "ice" -> from(d in query, where: d.ice_fishing)
+      _ -> query
+    end
+  end
+
+  defp lake_filter(query, lake) do
+    if lake == true || lake == false do
+      from(d in query, where: d.lake == ^lake)
+    else
+      query
+    end
   end
 end

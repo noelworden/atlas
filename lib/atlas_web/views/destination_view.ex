@@ -1,14 +1,27 @@
 defmodule AtlasWeb.DestinationView do
   use AtlasWeb, :view
 
-  def page_title(filter \\ "") do
-    case filter do
-      "spring" -> "All Spring"
-      "summer" -> "All Summer"
-      "fall" -> "All Fall"
-      "winter" -> "All Winter"
-      "ice" -> "All Ice Fishing"
-      _ -> "All"
+  def title_divider("", ""), do: ""
+  def title_divider(_, ""), do: ""
+  def title_divider("", _), do: ""
+  def title_divider(_, _), do: " / "
+
+  def page_title_season(season \\ "") do
+    case season do
+      "spring" -> "Spring"
+      "summer" -> "Summer"
+      "fall" -> "Fall"
+      "winter" -> "Winter"
+      "ice" -> "Ice Fishing"
+      _ -> ""
+    end
+  end
+
+  def page_title_lake(lake) do
+    case lake do
+      true -> "Lake"
+      false -> "River & Stream"
+      _ -> ""
     end
   end
 
