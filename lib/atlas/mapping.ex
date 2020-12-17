@@ -4,7 +4,7 @@ defmodule Atlas.Mapping do
   """
 
   import Ecto.Query, warn: false
-  alias Atlas.{Repo, Mapping.Destination}
+  alias Atlas.{Mapping.Destination, Repo}
 
   def list_filtered_destinations(season, lake) do
     Destination
@@ -131,12 +131,10 @@ defmodule Atlas.Mapping do
   end
 
   defp lake_filter(query, lake) do
-    cond do
-      lake == true || lake == false ->
-        from(d in query, where: d.lake == ^lake)
-
-      true ->
-        query
+    if lake == true || lake == false do
+      from(d in query, where: d.lake == ^lake)
+    else
+      query
     end
   end
 end
