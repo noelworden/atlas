@@ -14,7 +14,7 @@
         <div>
           <span><a href="/">Home</a></span>
           ||
-          <span><%= link "Create Another Destination", to: Routes.destination_path(@conn, :new) %></span>
+          <span><%= link "Create New Destination", to: Routes.destination_path(@conn, :new) %></span>
         </div>
           <h1>Angling Atlas</h1>
       </section>
