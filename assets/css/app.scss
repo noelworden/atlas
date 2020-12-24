@@ -35,7 +35,6 @@
   display: block;
   margin: -1rem 0 2rem;
 }
-
 .map--large{
   height: 80rem;
   margin: 2rem auto;
@@ -50,14 +49,19 @@
   display: flex;
   justify-content: space-between;
 }
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .list-items--show{
   margin: auto;
 }
-
-.filter-dropdown{
-  margin: 0 10px
+.filter-element{
+  margin: 10px 0;
+  width: 300px
 }
-
 .filter-dropdown--last{
-  margin: 0 20px 0 10px
+  margin: 0 20px 0 10px;
+  width: 300px
 }
