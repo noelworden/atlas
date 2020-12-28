@@ -1,7 +1,9 @@
 <h1>
   All <%= page_title_season(@season)%>
   <%= title_divider(@season, @lake)%>
-  <%= page_title_lake(@lake)%> Destinations
+  <%= page_title_lake(@lake)%>
+  <%= title_divider(@lake, @distance)%>
+  <%= page_title_distance(@distance)%> Destinations
 </h1>
 <div id="map" class="map--large">
   <script>

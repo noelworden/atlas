@@ -468,6 +468,222 @@ defmodule Atlas.MappingTest do
       }
     ]
 
+    @valid_multi_attrs_two_less_than_one [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: false,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "-120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: false,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "-120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: false,
+        latitude: "120.4",
+        less_than_one_hour: false,
+        longitude: "-120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_two_one_to_three [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: false,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "-120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: false,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "-120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: false,
+        latitude: "120.4",
+        less_than_one_hour: false,
+        longitude: "-120.4",
+        name: "some name",
+        one_to_three_hours: false,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      }
+    ]
+
+    @valid_multi_attrs_two_more_than_three [
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: false,
+        lake: true,
+        latitude: "120.5",
+        less_than_one_hour: true,
+        longitude: "-120.5",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: true,
+        season_spring: true,
+        season_summer: true,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: true,
+        hike_in: true,
+        ice_fishing: true,
+        lake: false,
+        latitude: "120.4",
+        less_than_one_hour: true,
+        longitude: "-120.4",
+        name: "some name",
+        one_to_three_hours: true,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      },
+      %{
+        allows_dogs: true,
+        backpack_camp: true,
+        car_camp: true,
+        car_friendly: true,
+        description: "some description",
+        dogs_off_leash: true,
+        fee: true,
+        greater_than_three_hours: false,
+        hike_in: true,
+        ice_fishing: true,
+        lake: false,
+        latitude: "120.4",
+        less_than_one_hour: false,
+        longitude: "-120.4",
+        name: "some name",
+        one_to_three_hours: false,
+        season_fall: false,
+        season_spring: false,
+        season_summer: false,
+        season_winter: true,
+        spinner_friendly: true
+      }
+    ]
+
     @update_attrs %{
       allows_dogs: false,
       backpack_camp: false,
@@ -530,42 +746,57 @@ defmodule Atlas.MappingTest do
 
     test "returns all unfiltered destinations" do
       multi_destination_fixture(@valid_multi_attrs)
-      assert Enum.count(Mapping.list_filtered_destinations("none", "")) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("none", "", "")) == 2
     end
 
-    test "list_filtered_destinations/2 returns one summer destination" do
+    test "list_filtered_destinations/3 returns one summer destination" do
       multi_destination_fixture(@valid_multi_attrs_one_summer)
-      assert Enum.count(Mapping.list_filtered_destinations("summer", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("summer", "", "")) == 1
     end
 
-    test "list_filtered_destinations/2 returns one spring destination" do
+    test "list_filtered_destinations/3 returns one spring destination" do
       multi_destination_fixture(@valid_multi_attrs_one_spring)
-      assert Enum.count(Mapping.list_filtered_destinations("spring", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("spring", "", "")) == 1
     end
 
-    test "list_filtered_destinations/2 returns one fall destination" do
+    test "list_filtered_destinations/3 returns one fall destination" do
       multi_destination_fixture(@valid_multi_attrs_one_fall)
-      assert Enum.count(Mapping.list_filtered_destinations("fall", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("fall", "", "")) == 1
     end
 
-    test "list_filtered_destinations/2 returns one winter destination" do
+    test "list_filtered_destinations/3 returns one winter destination" do
       multi_destination_fixture(@valid_multi_attrs_one_winter)
-      assert Enum.count(Mapping.list_filtered_destinations("winter", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("winter", "", "")) == 1
     end
 
-    test "list_filtered_destinations/2 returns one ice destination" do
+    test "list_filtered_destinations/3 returns one ice destination" do
       multi_destination_fixture(@valid_multi_attrs_one_ice)
-      assert Enum.count(Mapping.list_filtered_destinations("ice", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("ice", "", "")) == 1
     end
 
-    test "list_filtered_destinations/2 returns two lake destinations" do
+    test "list_filtered_destinations/3 returns two lake destinations" do
       multi_destination_fixture(@valid_multi_attrs_two_lake)
-      assert Enum.count(Mapping.list_filtered_destinations("", true)) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", true, "")) == 2
     end
 
-    test "list_filtered_destinations/2 returns two river & stream destinations" do
+    test "list_filtered_destinations/3 returns two river & stream destinations" do
       multi_destination_fixture(@valid_multi_attrs_two_river_stream)
-      assert Enum.count(Mapping.list_filtered_destinations("", false)) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", false, "")) == 2
+    end
+
+    test "list_filtered_destinations/3 returns two 'less than one hour' destinations" do
+      multi_destination_fixture(@valid_multi_attrs_two_less_than_one)
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "less_than_one")) == 2
+    end
+
+    test "list_filtered_destinations/3 returns two 'one to three hour' destinations" do
+      multi_destination_fixture(@valid_multi_attrs_two_one_to_three)
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "one_to_three")) == 2
+    end
+
+    test "list_filtered_destinations/3 returns two 'more than three hour' destinations" do
+      multi_destination_fixture(@valid_multi_attrs_two_more_than_three)
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "more_than_three")) == 2
     end
 
     test "get_destination!/1 returns the destination with given id" do
@@ -586,13 +817,13 @@ defmodule Atlas.MappingTest do
     end
 
     test "get_coordinates/1 returns string of empty list if no destinations are present" do
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       assert Mapping.get_coordinates(listed_destinations) == "[]"
     end
 
     test "get_coordinates/1 returns long/lat coordinates of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
 
       assert Mapping.get_coordinates(listed_destinations) ==
                "[[#{destination.longitude},#{destination.latitude}]]"
@@ -600,7 +831,7 @@ defmodule Atlas.MappingTest do
 
     test "get_coordinates/1 returns long/lat coordinates of multiple destinations" do
       multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
 
@@ -620,7 +851,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns longitude of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
 
       assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
                Decimal.to_float(destination.longitude)
@@ -628,7 +859,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns latitude of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
 
       assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
                Decimal.to_float(destination.latitude)
@@ -636,7 +867,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns median longitude of multiple destinations" do
       multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
 
@@ -651,7 +882,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns median latitude of multiple destinations" do
       multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
 
@@ -665,19 +896,19 @@ defmodule Atlas.MappingTest do
     end
 
     test "get_names/1 returns string of empty list if no destinations are present" do
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       assert Mapping.get_names(listed_destinations) == "[]"
     end
 
     test "get_names/1 returns string of list of single JSON converted name of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       assert Mapping.get_names(listed_destinations) == "[[\"#{destination.name}\"]]"
     end
 
     test "get_names/1 returns string of list of JSON converted names of multiple destinations" do
       multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
 

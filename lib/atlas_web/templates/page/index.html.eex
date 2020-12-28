@@ -7,6 +7,9 @@
       <%= select(f, :lake, @lake_options,  prompt: "Choose water type", class: "filter-element")%>
     </div>
     <div>
+      <%= select(f, :distance, @distance_options,  prompt: "Choose distance", class: "filter-element")%>
+    </div>
+    <div>
       <%= submit "Search", class: "filter-element"%>
     </div>
   <% end %>
