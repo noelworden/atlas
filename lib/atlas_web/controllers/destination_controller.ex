@@ -4,9 +4,9 @@ defmodule AtlasWeb.DestinationController do
   alias Atlas.Mapping
   alias Atlas.Mapping.Destination
 
-  def index(conn, %{"season" => season, "lake" => lake}) do
+  def index(conn, %{"season" => season, "lake" => lake, "distance" => distance}) do
     converted_lake = Mapping.string_to_boolean(lake)
-    destinations = Mapping.list_filtered_destinations(season, converted_lake)
+    destinations = Mapping.list_filtered_destinations(season, converted_lake, distance)
     coordinates = Mapping.get_coordinates(destinations)
     names = Mapping.get_names(destinations)
     median_long = Mapping.find_median_coordinates(:longitude, destinations)
@@ -16,6 +16,7 @@ defmodule AtlasWeb.DestinationController do
       destinations: destinations,
       season: season,
       lake: converted_lake,
+      distance: distance,
       coordinates: coordinates,
       names: names,
       median_long: median_long,

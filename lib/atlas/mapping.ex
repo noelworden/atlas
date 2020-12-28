@@ -6,10 +6,11 @@ defmodule Atlas.Mapping do
   import Ecto.Query, warn: false
   alias Atlas.{Mapping.Destination, Repo}
 
-  def list_filtered_destinations(season, lake) do
+  def list_filtered_destinations(season, lake, distance) do
     Destination
     |> season_filter(season)
     |> lake_filter(lake)
+    |> distance_filter(distance)
     |> Repo.all()
   end
 
@@ -97,6 +98,14 @@ defmodule Atlas.Mapping do
     ]
   end
 
+  def distance_options do
+    [
+      {"1 hour or less", "less_than_one"},
+      {"1 - 3 hours", "one_to_three"},
+      {"3+ hours", "more_than_three"}
+    ]
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do
@@ -135,6 +144,15 @@ defmodule Atlas.Mapping do
       from(d in query, where: d.lake == ^lake)
     else
       query
+    end
+  end
+
+  defp distance_filter(query, distance) do
+    case distance do
+      "less_than_one" -> from(d in query, where: d.less_than_one_hour)
+      "one_to_three" -> from(d in query, where: d.one_to_three_hours)
+      "more_than_three" -> from(d in query, where: d.greater_than_three_hours)
+      _ -> query
     end
   end
 end

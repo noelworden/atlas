@@ -80,62 +80,125 @@ defmodule AtlasWeb.DestinationControllerTest do
 
   describe "index showing with no filtering" do
     test "lists unfiltered destinations", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "", lake: ""))
+      conn = get(conn, Routes.destination_path(conn, :index, season: "", lake: "", distance: ""))
       assert html_response(conn, 200) =~ "<h1>\n  All \n   Destinations\n</h1>"
     end
   end
 
   describe "index showing only filtered by season" do
     test "lists spring filtered destinations with no lake params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "spring", lake: ""))
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "spring", lake: "", distance: ""))
 
       assert html_response(conn, 200) =~ "<h1>\n  All Spring\n   Destinations\n</h1>"
     end
 
     test "lists summer filtered destinations with no lake params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "summer", lake: ""))
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "summer", lake: "", distance: ""))
+
       assert html_response(conn, 200) =~ "<h1>\n  All Summer\n   Destinations\n</h1>"
     end
 
     test "lists fall filtered destinations with no lake params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "fall", lake: ""))
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "fall", lake: "", distance: ""))
+
       assert html_response(conn, 200) =~ "<h1>\n  All Fall\n   Destinations\n</h1>"
     end
 
     test "lists winter filtered destinations with no lake params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "winter", lake: ""))
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "winter", lake: "", distance: ""))
+
       assert html_response(conn, 200) =~ "<h1>\n  All Winter\n   Destinations\n</h1>"
     end
 
     test "lists ice fishing filtered destinations with no lake params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "ice", lake: ""))
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "ice", lake: "", distance: ""))
+
       assert html_response(conn, 200) =~ "<h1>\n  All Ice Fishing\n   Destinations\n</h1>"
     end
   end
 
   describe "index showing only filtered by lake" do
     test "lists lake true filtered destinations with no season params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "", lake: true))
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  Lake Destinations\n</h1>"
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "", lake: true, distance: ""))
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \nLake   Destinations\n</h1>"
     end
 
     test "lists lake false filtered destinations with no season params", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "", lake: false))
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  River &amp; Stream Destinations\n</h1>"
+      conn =
+        get(conn, Routes.destination_path(conn, :index, season: "", lake: false, distance: ""))
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \nRiver &amp; Stream   Destinations\n</h1>"
     end
   end
 
-  describe "index showing by season and lake filter" do
-    test "lists spring filtered with lake true", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "spring", lake: true))
-      assert html_response(conn, 200) =~ "<h1>\n  All Spring\n /   Lake Destinations\n</h1>"
+  describe "index showing only filtered by distance" do
+    test "list only destinations that are one hour or less", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index, season: "", lake: "", distance: "less_than_one")
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  1 Hour or Less Destinations\n</h1>"
     end
 
-    test "lists fall filtered with lake false", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :index, season: "fall", lake: false))
+    test "list only destinations that are one to three hours", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index, season: "", lake: "", distance: "one_to_three")
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  1 - 3 Hour Destinations\n</h1>"
+    end
+
+    test "list only destinations that are more than three hours", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index, season: "", lake: "", distance: "more_than_three")
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  3+ Hour Destinations\n</h1>"
+    end
+  end
+
+  describe "index showing by season, lake, and distance filter" do
+    test "lists spring filtered with lake true and distance one to three", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "spring",
+            lake: true,
+            distance: "one_to_three"
+          )
+        )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Fall\n /   River &amp; Stream Destinations\n</h1>"
+               "<h1>\n  All Spring\n / Lake /   1 - 3 Hour Destinations\n</h1>"
+    end
+
+    test "lists fall filtered with lake false and distance of more than three", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "fall",
+            lake: false,
+            distance: "more_than_three"
+          )
+        )
+
+      assert html_response(conn, 200) =~
+               "<h1>\n  All Fall\n / River &amp; Stream /   3+ Hour Destinations\n</h1>"
     end
   end
 
