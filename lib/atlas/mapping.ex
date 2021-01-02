@@ -5,6 +5,7 @@ defmodule Atlas.Mapping do
 
   import Ecto.Query, warn: false
   alias Atlas.{Mapping.Destination, Repo}
+  alias Decimal, as: D
 
   def list_filtered_destinations(season, lake, distance) do
     Destination
@@ -28,7 +29,7 @@ defmodule Atlas.Mapping do
       Map.take(destination, [:longitude, :latitude])
       |> Map.values()
       |> Enum.reverse()
-      |> Enum.map(fn coordinate -> Decimal.to_float(coordinate) end)
+      |> Enum.map(fn coordinate -> D.to_float(coordinate) end)
     end)
     |> Jason.encode()
     |> case do
@@ -57,12 +58,12 @@ defmodule Atlas.Mapping do
       |> Enum.map(fn destination ->
         Map.take(destination, [field])
         |> Map.values()
-        |> Enum.map(fn coordinate -> Decimal.to_float(coordinate) end)
+        |> Enum.map(fn coordinate -> D.to_float(coordinate) end)
       end)
       |> List.flatten()
       |> Enum.reduce(fn item, acc -> item + acc end)
 
-    total / Enum.count(destinations)
+    D.to_float(D.div(D.from_float(total), Enum.count(destinations)))
   end
 
   def get_names(destinations) do
