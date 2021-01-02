@@ -62,7 +62,7 @@ defmodule Atlas.Mapping do
       |> List.flatten()
       |> Enum.reduce(fn item, acc -> item + acc end)
 
-    total / Enum.count(destinations)
+    Decimal.to_float(Decimal.div(Decimal.from_float(total), Enum.count(destinations)))
   end
 
   def get_names(destinations) do
