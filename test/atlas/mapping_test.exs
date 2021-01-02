@@ -2,6 +2,7 @@ defmodule Atlas.MappingTest do
   use Atlas.DataCase
 
   alias Atlas.Mapping
+  alias Decimal, as: D
 
   describe "destinations" do
     alias Atlas.Mapping.Destination
@@ -306,7 +307,7 @@ defmodule Atlas.MappingTest do
       listed_destinations = Mapping.list_filtered_destinations("none", "", "")
 
       assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
-               Decimal.to_float(destination.longitude)
+               D.to_float(destination.longitude)
     end
 
     test "find_median_coordinates/2 returns latitude of single destination" do
@@ -314,7 +315,7 @@ defmodule Atlas.MappingTest do
       listed_destinations = Mapping.list_filtered_destinations("none", "", "")
 
       assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
-               Decimal.to_float(destination.latitude)
+               D.to_float(destination.latitude)
     end
 
     test "find_median_coordinates/2 returns median longitude of multiple destinations" do
@@ -325,11 +326,11 @@ defmodule Atlas.MappingTest do
       third_destination = Enum.at(listed_destinations, 2)
 
       assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
-               Decimal.to_float(
-                 Decimal.div(
-                   Decimal.add(
+               D.to_float(
+                 D.div(
+                   D.add(
                      first_destination.longitude,
-                     Decimal.add(second_destination.longitude, third_destination.longitude)
+                     D.add(second_destination.longitude, third_destination.longitude)
                    ),
                    3
                  )
@@ -344,11 +345,11 @@ defmodule Atlas.MappingTest do
       third_destination = Enum.at(listed_destinations, 2)
 
       assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
-               Decimal.to_float(
-                 Decimal.div(
-                   Decimal.add(
+               D.to_float(
+                 D.div(
+                   D.add(
                      first_destination.latitude,
-                     Decimal.add(second_destination.latitude, third_destination.latitude)
+                     D.add(second_destination.latitude, third_destination.latitude)
                    ),
                    3
                  )
@@ -392,9 +393,9 @@ defmodule Atlas.MappingTest do
       assert destination.hike_in == true
       assert destination.ice_fishing == true
       assert destination.lake == true
-      assert destination.latitude == Decimal.new("120.5")
+      assert destination.latitude == D.new("120.5")
       assert destination.less_than_one_hour == true
-      assert destination.longitude == Decimal.new("-120.5")
+      assert destination.longitude == D.new("-120.5")
       assert destination.name == "single destination name"
       assert destination.one_to_three_hours == true
       assert destination.season_fall == true
@@ -425,9 +426,9 @@ defmodule Atlas.MappingTest do
       assert destination.hike_in == false
       assert destination.ice_fishing == false
       assert destination.lake == false
-      assert destination.latitude == Decimal.new("456.7")
+      assert destination.latitude == D.new("456.7")
       assert destination.less_than_one_hour == false
-      assert destination.longitude == Decimal.new("-456.7")
+      assert destination.longitude == D.new("-456.7")
       assert destination.name == "some updated name"
       assert destination.one_to_three_hours == false
       assert destination.season_fall == false
