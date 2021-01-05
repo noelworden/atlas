@@ -116,6 +116,8 @@ To run only a specific test within a test file:
   - The logs do not automatically show, to view the logs
     - `gigalixir logs`
 
+### Seeding the database
+  - `gigalixir run -- mix run priv/repo/seeds.exs`
 ----
 ## Viewing the app
 ### To open the app in a browser
