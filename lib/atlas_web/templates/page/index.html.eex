@@ -10,6 +10,9 @@
       <%= select(f, :distance, @distance_options,  prompt: "Choose distance", class: "filter-element")%>
     </div>
     <div>
+      <%= select(f, :vehicle, @vehicle_options,  prompt: "Choose vehicle type", class: "filter-element")%>
+    </div>
+    <div>
       <%= submit "Search", class: "filter-element"%>
     </div>
   <% end %>
