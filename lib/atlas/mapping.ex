@@ -7,11 +7,12 @@ defmodule Atlas.Mapping do
   alias Atlas.{Mapping.Destination, Repo}
   alias Decimal, as: D
 
-  def list_filtered_destinations(season, lake, distance) do
+  def list_filtered_destinations(season, lake, distance, vehicle) do
     Destination
     |> season_filter(season)
     |> lake_filter(lake)
     |> distance_filter(distance)
+    |> vehicle_filter(vehicle)
     |> Repo.all()
   end
 
@@ -107,6 +108,13 @@ defmodule Atlas.Mapping do
     ]
   end
 
+  def vehicle_options do
+    [
+      {"Car", true},
+      {"Truck", false}
+    ]
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do
@@ -154,6 +162,14 @@ defmodule Atlas.Mapping do
       "one_to_three" -> from(d in query, where: d.one_to_three_hours)
       "more_than_three" -> from(d in query, where: d.greater_than_three_hours)
       _ -> query
+    end
+  end
+
+  defp vehicle_filter(query, vehicle) do
+    if vehicle == true || vehicle == false do
+      from(d in query, where: d.car_friendly == ^vehicle)
+    else
+      query
     end
   end
 end

@@ -181,72 +181,92 @@ defmodule Atlas.MappingTest do
 
     test "returns all unfiltered destinations" do
       standard_multi_destination_fixture(@valid_multi_attrs)
-      assert Enum.count(Mapping.list_filtered_destinations("none", "", "")) == 3
+      assert Enum.count(Mapping.list_filtered_destinations("none", "", "", "")) == 3
     end
 
-    test "list_filtered_destinations/3 returns one spring destination" do
+    test "list_filtered_destinations/4 returns one spring destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_spring, [true, false, false])
-      assert Enum.count(Mapping.list_filtered_destinations("spring", "", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("spring", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/3 returns one summer destination" do
+    test "list_filtered_destinations/4 returns one summer destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_summer, [true, false, false])
-      assert Enum.count(Mapping.list_filtered_destinations("summer", "", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("summer", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/3 returns one fall destination" do
+    test "list_filtered_destinations/4 returns one fall destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_fall, [true, false, false])
-      assert Enum.count(Mapping.list_filtered_destinations("fall", "", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("fall", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/3 returns one winter destination" do
+    test "list_filtered_destinations/4 returns one winter destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_winter, [true, false, false])
-      assert Enum.count(Mapping.list_filtered_destinations("winter", "", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("winter", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/3 returns one ice destination" do
+    test "list_filtered_destinations/4 returns one ice destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :ice_fishing, [true, false, false])
-      assert Enum.count(Mapping.list_filtered_destinations("ice", "", "")) == 1
+      assert Enum.count(Mapping.list_filtered_destinations("ice", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/3 returns two lake destinations" do
+    test "list_filtered_destinations/4 returns two lake destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :lake, [true, true, false])
-      assert Enum.count(Mapping.list_filtered_destinations("", true, "")) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", true, "", "")) == 2
     end
 
-    test "list_filtered_destinations/3 returns two river & stream destinations" do
+    test "list_filtered_destinations/4 returns two river & stream destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :lake, [true, false, false])
-      assert Enum.count(Mapping.list_filtered_destinations("", false, "")) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", false, "", "")) == 2
     end
 
-    test "list_filtered_destinations/3 returns two 'less than one hour' destinations" do
+    test "list_filtered_destinations/4 returns two 'less than one hour' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :less_than_one_hour, [
         true,
         true,
         false
       ])
 
-      assert Enum.count(Mapping.list_filtered_destinations("", "", "less_than_one")) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "less_than_one", "")) == 2
     end
 
-    test "list_filtered_destinations/3 returns two 'one to three hour' destinations" do
+    test "list_filtered_destinations/4 returns two 'one to three hour' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :one_to_three_hours, [
         true,
         true,
         false
       ])
 
-      assert Enum.count(Mapping.list_filtered_destinations("", "", "one_to_three")) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "one_to_three", "")) == 2
     end
 
-    test "list_filtered_destinations/3 returns two 'more than three hour' destinations" do
+    test "list_filtered_destinations/4 returns two 'more than three hour' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :greater_than_three_hours, [
         true,
         true,
         false
       ])
 
-      assert Enum.count(Mapping.list_filtered_destinations("", "", "more_than_three")) == 2
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "more_than_three", "")) == 2
+    end
+
+    test "list_filtered_destinations/4 returns two 'car_friendly - true' destinations" do
+      custom_multi_destination_fixture(@valid_multi_attrs, :car_friendly, [
+        true,
+        true,
+        false
+      ])
+
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "", true)) == 2
+    end
+
+    test "list_filtered_destinations/4 returns two 'car_friendly - false' destinations" do
+      custom_multi_destination_fixture(@valid_multi_attrs, :car_friendly, [
+        true,
+        false,
+        false
+      ])
+
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "", false)) == 2
     end
 
     test "get_destination!/1 returns the destination with given id" do
@@ -267,13 +287,13 @@ defmodule Atlas.MappingTest do
     end
 
     test "get_coordinates/1 returns string of empty list if no destinations are present" do
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       assert Mapping.get_coordinates(listed_destinations) == "[]"
     end
 
     test "get_coordinates/1 returns long/lat coordinates of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
 
       assert Mapping.get_coordinates(listed_destinations) ==
                "[[#{destination.longitude},#{destination.latitude}]]"
@@ -281,7 +301,7 @@ defmodule Atlas.MappingTest do
 
     test "get_coordinates/1 returns long/lat coordinates of multiple destinations" do
       standard_multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
       third_destination = Enum.at(listed_destinations, 2)
@@ -304,7 +324,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns longitude of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
 
       assert Mapping.find_median_coordinates(:longitude, listed_destinations) ==
                D.to_float(destination.longitude)
@@ -312,7 +332,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns latitude of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
 
       assert Mapping.find_median_coordinates(:latitude, listed_destinations) ==
                D.to_float(destination.latitude)
@@ -320,7 +340,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns median longitude of multiple destinations" do
       standard_multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
       third_destination = Enum.at(listed_destinations, 2)
@@ -339,7 +359,7 @@ defmodule Atlas.MappingTest do
 
     test "find_median_coordinates/2 returns median latitude of multiple destinations" do
       standard_multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
       third_destination = Enum.at(listed_destinations, 2)
@@ -357,19 +377,19 @@ defmodule Atlas.MappingTest do
     end
 
     test "get_names/1 returns string of empty list if no destinations are present" do
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       assert Mapping.get_names(listed_destinations) == "[]"
     end
 
     test "get_names/1 returns string of list of single JSON converted name of single destination" do
       destination = single_destination_fixture()
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       assert Mapping.get_names(listed_destinations) == "[[\"#{destination.name}\"]]"
     end
 
     test "get_names/1 returns string of list of JSON converted names of multiple destinations" do
       standard_multi_destination_fixture(@valid_multi_attrs)
-      listed_destinations = Mapping.list_filtered_destinations("none", "", "")
+      listed_destinations = Mapping.list_filtered_destinations("none", "", "", "")
       first_destination = Enum.at(listed_destinations, 0)
       second_destination = Enum.at(listed_destinations, 1)
       third_destination = Enum.at(listed_destinations, 2)
