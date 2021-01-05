@@ -34,6 +34,14 @@ defmodule AtlasWeb.DestinationView do
     end
   end
 
+  def page_title_vehicle(vehicle) do
+    case vehicle do
+      true -> "Car"
+      false -> "Truck"
+      _ -> ""
+    end
+  end
+
   def display_distance(less_than_one, one_to_three, greater_than_three) do
     cond do
       less_than_one -> "< 1"
