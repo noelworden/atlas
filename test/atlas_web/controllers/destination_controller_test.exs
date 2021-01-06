@@ -83,7 +83,13 @@ defmodule AtlasWeb.DestinationControllerTest do
       conn =
         get(
           conn,
-          Routes.destination_path(conn, :index, season: "", lake: "", distance: "", vehicle: "")
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: ""
+          )
         )
 
       assert html_response(conn, 200) =~ "<h1>\n  All \n   Destinations\n</h1>"
@@ -99,7 +105,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "spring",
             lake: "",
             distance: "",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -114,7 +121,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "summer",
             lake: "",
             distance: "",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -129,7 +137,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "fall",
             lake: "",
             distance: "",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -144,7 +153,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "winter",
             lake: "",
             distance: "",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -155,7 +165,13 @@ defmodule AtlasWeb.DestinationControllerTest do
       conn =
         get(
           conn,
-          Routes.destination_path(conn, :index, season: "ice", lake: "", distance: "", vehicle: "")
+          Routes.destination_path(conn, :index,
+            season: "ice",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: ""
+          )
         )
 
       assert html_response(conn, 200) =~ "<h1>\n  All Ice Fishing\n   Destinations\n</h1>"
@@ -167,7 +183,13 @@ defmodule AtlasWeb.DestinationControllerTest do
       conn =
         get(
           conn,
-          Routes.destination_path(conn, :index, season: "", lake: true, distance: "", vehicle: "")
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: true,
+            distance: "",
+            vehicle: "",
+            dog: ""
+          )
         )
 
       assert html_response(conn, 200) =~ "<h1>\n  All \nLake   Destinations\n</h1>"
@@ -177,7 +199,13 @@ defmodule AtlasWeb.DestinationControllerTest do
       conn =
         get(
           conn,
-          Routes.destination_path(conn, :index, season: "", lake: false, distance: "", vehicle: "")
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: false,
+            distance: "",
+            vehicle: "",
+            dog: ""
+          )
         )
 
       assert html_response(conn, 200) =~ "<h1>\n  All \nRiver &amp; Stream   Destinations\n</h1>"
@@ -193,7 +221,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "",
             lake: "",
             distance: "less_than_one",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -208,7 +237,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "",
             lake: "",
             distance: "one_to_three",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -223,7 +253,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "",
             lake: "",
             distance: "more_than_three",
-            vehicle: ""
+            vehicle: "",
+            dog: ""
           )
         )
 
@@ -232,7 +263,7 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by vehicle" do
-    test "list only destinations that car friendly", %{conn: conn} do
+    test "list only destinations that are car friendly", %{conn: conn} do
       conn =
         get(
           conn,
@@ -240,14 +271,15 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "",
             lake: "",
             distance: "",
-            vehicle: true
+            vehicle: true,
+            dog: ""
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  Car Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h1>\n  All \nCar   Destinations\n</h1>"
     end
 
-    test "list only destinations that not car friendly", %{conn: conn} do
+    test "list only destinations that are not car friendly", %{conn: conn} do
       conn =
         get(
           conn,
@@ -255,15 +287,66 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "",
             lake: "",
             distance: "",
-            vehicle: false
+            vehicle: false,
+            dog: ""
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  Truck Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h1>\n  All \nTruck   Destinations\n</h1>"
     end
   end
 
-  describe "index showing by season, lake, and distance filter" do
+  describe "index showing only filtered by dog options" do
+    test "list only destinations that allow dogs and off leash", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: "off_leash"
+          )
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  Off Leash Destinations\n</h1>"
+    end
+
+    test "list only destinations that allow dogs and on leash", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: "on_leash"
+          )
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  On Leash Destinations\n</h1>"
+    end
+
+    test "list only destinations that do not allow dogs", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: "no_dog"
+          )
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  No Dog Destinations\n</h1>"
+    end
+  end
+
+  describe "index showing by season, lake, distance, vehicle, and dog filter" do
     test "lists spring filtered with lake true and distance one to three", %{conn: conn} do
       conn =
         get(
@@ -272,12 +355,13 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "spring",
             lake: true,
             distance: "one_to_three",
-            vehicle: ""
+            vehicle: true,
+            dog: "off_leash"
           )
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Spring\n / Lake / 1 - 3 Hour   Destinations\n</h1>"
+               "<h1>\n  All Spring\n / Lake / 1 - 3 Hour / Car /   Off Leash Destinations\n</h1>"
     end
 
     test "lists fall filtered with lake false and distance of more than three", %{conn: conn} do
@@ -288,12 +372,13 @@ defmodule AtlasWeb.DestinationControllerTest do
             season: "fall",
             lake: false,
             distance: "more_than_three",
-            vehicle: ""
+            vehicle: false,
+            dog: "no_dog"
           )
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Fall\n / River &amp; Stream / 3+ Hour   Destinations\n</h1>"
+               "<h1>\n  All Fall\n / River &amp; Stream / 3+ Hour / Truck /   No Dog Destinations\n</h1>"
     end
   end
 
