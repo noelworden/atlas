@@ -7,7 +7,7 @@ defmodule Atlas.Mapping do
   alias Atlas.{Mapping.Destination, Repo}
   alias Decimal, as: D
 
-  def list_filtered_destinations(season, lake, distance, vehicle, dog, hike) do
+  def list_filtered_destinations(season, lake, distance, vehicle, dog, hike, camp) do
     Destination
     |> season_filter(season)
     |> lake_filter(lake)
@@ -15,6 +15,7 @@ defmodule Atlas.Mapping do
     |> vehicle_filter(vehicle)
     |> dog_filter(dog)
     |> hike_filter(hike)
+    |> camp_filter(camp)
     |> Repo.all()
   end
 
@@ -132,6 +133,14 @@ defmodule Atlas.Mapping do
     ]
   end
 
+  def camp_options do
+    [
+      {"Car or Backpack Camping", "car_backpack"},
+      {"Car Camp", "car"},
+      {"Backpack Camp", "backpack"}
+    ]
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do
@@ -204,6 +213,15 @@ defmodule Atlas.Mapping do
       from(d in query, where: d.hike_in == ^hike)
     else
       query
+    end
+  end
+
+  defp camp_filter(query, camp) do
+    case camp do
+      "car_backpack" -> from(d in Destination, where: d.car_camp or d.backpack_camp)
+      "car" -> from(d in Destination, where: d.car_camp)
+      "backpack" -> from(d in Destination, where: d.backpack_camp)
+      _ -> query
     end
   end
 end
