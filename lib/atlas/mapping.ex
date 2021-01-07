@@ -7,13 +7,14 @@ defmodule Atlas.Mapping do
   alias Atlas.{Mapping.Destination, Repo}
   alias Decimal, as: D
 
-  def list_filtered_destinations(season, lake, distance, vehicle, dog) do
+  def list_filtered_destinations(season, lake, distance, vehicle, dog, hike) do
     Destination
     |> season_filter(season)
     |> lake_filter(lake)
     |> distance_filter(distance)
     |> vehicle_filter(vehicle)
     |> dog_filter(dog)
+    |> hike_filter(hike)
     |> Repo.all()
   end
 
@@ -124,6 +125,13 @@ defmodule Atlas.Mapping do
     ]
   end
 
+  def hike_options do
+    [
+      {"Hiking", true},
+      {"Non-hiking", false}
+    ]
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do
@@ -188,6 +196,14 @@ defmodule Atlas.Mapping do
       "on_leash" -> from(d in Destination, where: d.allows_dogs and not d.dogs_off_leash)
       "no_dog" -> from(d in Destination, where: not d.allows_dogs)
       _ -> query
+    end
+  end
+
+  defp hike_filter(query, hike) do
+    if hike == true || hike == false do
+      from(d in query, where: d.hike_in == ^hike)
+    else
+      query
     end
   end
 end

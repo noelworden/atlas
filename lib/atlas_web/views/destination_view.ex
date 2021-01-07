@@ -51,6 +51,14 @@ defmodule AtlasWeb.DestinationView do
     end
   end
 
+  def page_title_hike(hike) do
+    case hike do
+      true -> "Hiking"
+      false -> "Non - Hiking"
+      _ -> ""
+    end
+  end
+
   def display_distance(less_than_one, one_to_three, greater_than_three) do
     cond do
       less_than_one -> "< 1"
