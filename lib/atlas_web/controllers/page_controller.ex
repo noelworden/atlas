@@ -11,6 +11,7 @@ defmodule AtlasWeb.PageController do
     dog_options = Mapping.dog_options()
     hike_options = Mapping.hike_options()
     camp_options = Mapping.camp_options()
+    fee_options = Mapping.fee_options()
 
     render(conn, "index.html",
       season_options: season_options,
@@ -19,7 +20,8 @@ defmodule AtlasWeb.PageController do
       vehicle_options: vehicle_options,
       dog_options: dog_options,
       hike_options: hike_options,
-      camp_options: camp_options
+      camp_options: camp_options,
+      fee_options: fee_options
     )
   end
 end

@@ -7,7 +7,7 @@ defmodule Atlas.Mapping do
   alias Atlas.{Mapping.Destination, Repo}
   alias Decimal, as: D
 
-  def list_filtered_destinations(season, lake, distance, vehicle, dog, hike, camp) do
+  def list_filtered_destinations(season, lake, distance, vehicle, dog, hike, camp, fee) do
     Destination
     |> season_filter(season)
     |> lake_filter(lake)
@@ -16,6 +16,7 @@ defmodule Atlas.Mapping do
     |> dog_filter(dog)
     |> hike_filter(hike)
     |> camp_filter(camp)
+    |> fee_filter(fee)
     |> Repo.all()
   end
 
@@ -141,6 +142,10 @@ defmodule Atlas.Mapping do
     ]
   end
 
+  def fee_options do
+    [{"No Fees", false}]
+  end
+
   def get_destination!(id), do: Repo.get!(Destination, id)
 
   def create_destination(attrs \\ %{}) do
@@ -222,6 +227,14 @@ defmodule Atlas.Mapping do
       "car" -> from(d in Destination, where: d.car_camp)
       "backpack" -> from(d in Destination, where: d.backpack_camp)
       _ -> query
+    end
+  end
+
+  defp fee_filter(query, fee) do
+    if fee == false do
+      from(d in query, where: d.fee == ^fee)
+    else
+      query
     end
   end
 end
