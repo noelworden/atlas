@@ -48,20 +48,24 @@ defmodule AtlasWeb.DestinationViewTest do
   end
 
   describe "title_divider/2 returns correct string" do
-    test "returns '' if both arguments are ''" do
-      assert DestinationView.title_divider("", "") == ""
-    end
-
-    test "returns '' if second argument is ''" do
-      assert DestinationView.title_divider("none", "") == ""
-    end
-
     test "returns '' if first argument is ''" do
-      assert DestinationView.title_divider("", true) == ""
+      assert DestinationView.title_divider("", []) == ""
     end
 
-    test "returns ' / ' if neither of the arguments are ''" do
-      assert DestinationView.title_divider("spring", false) == " / "
+    test "returns '' if second argument is an empty list" do
+      assert DestinationView.title_divider("none", []) == ""
+    end
+
+    test "returns '' if first argument is a title, and second is an empty list" do
+      assert DestinationView.title_divider("No dogs", []) == ""
+    end
+
+    test "returns ' / ' if the second argument contains a title" do
+      assert DestinationView.title_divider("spring", ["Lake"]) == " / "
+    end
+
+    test "returns ' / ' if the second argument contains a title and empty strings" do
+      assert DestinationView.title_divider("spring", ["", "", "Lake", ""]) == " / "
     end
   end
 
