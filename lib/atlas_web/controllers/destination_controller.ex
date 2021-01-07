@@ -9,10 +9,12 @@ defmodule AtlasWeb.DestinationController do
         "lake" => lake,
         "distance" => distance,
         "vehicle" => vehicle,
-        "dog" => dog
+        "dog" => dog,
+        "hike" => hike
       }) do
     converted_lake = Mapping.string_to_boolean(lake)
     converted_vehicle = Mapping.string_to_boolean(vehicle)
+    converted_hike = Mapping.string_to_boolean(hike)
 
     destinations =
       Mapping.list_filtered_destinations(
@@ -20,7 +22,8 @@ defmodule AtlasWeb.DestinationController do
         converted_lake,
         distance,
         converted_vehicle,
-        dog
+        dog,
+        converted_hike
       )
 
     coordinates = Mapping.get_coordinates(destinations)
@@ -35,6 +38,7 @@ defmodule AtlasWeb.DestinationController do
       distance: distance,
       vehicle: converted_vehicle,
       dog: dog,
+      hike: converted_hike,
       coordinates: coordinates,
       names: names,
       median_long: median_long,
