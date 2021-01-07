@@ -184,42 +184,42 @@ defmodule Atlas.MappingTest do
       assert Enum.count(Mapping.list_filtered_destinations("none", "", "", "", "", "")) == 3
     end
 
-    test "list_filtered_destinations/5 returns one spring destination" do
+    test "list_filtered_destinations/6 returns one spring destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_spring, [true, false, false])
       assert Enum.count(Mapping.list_filtered_destinations("spring", "", "", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/5 returns one summer destination" do
+    test "list_filtered_destinations/6 returns one summer destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_summer, [true, false, false])
       assert Enum.count(Mapping.list_filtered_destinations("summer", "", "", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/5 returns one fall destination" do
+    test "list_filtered_destinations/6 returns one fall destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_fall, [true, false, false])
       assert Enum.count(Mapping.list_filtered_destinations("fall", "", "", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/5 returns one winter destination" do
+    test "list_filtered_destinations/6 returns one winter destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :season_winter, [true, false, false])
       assert Enum.count(Mapping.list_filtered_destinations("winter", "", "", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/5 returns one ice destination" do
+    test "list_filtered_destinations/6 returns one ice destination" do
       custom_multi_destination_fixture(@valid_multi_attrs, :ice_fishing, [true, false, false])
       assert Enum.count(Mapping.list_filtered_destinations("ice", "", "", "", "", "")) == 1
     end
 
-    test "list_filtered_destinations/5 returns two lake destinations" do
+    test "list_filtered_destinations/6 returns two lake destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :lake, [true, true, false])
       assert Enum.count(Mapping.list_filtered_destinations("", true, "", "", "", "")) == 2
     end
 
-    test "list_filtered_destinations/5 returns two river & stream destinations" do
+    test "list_filtered_destinations/6 returns two river & stream destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :lake, [true, false, false])
       assert Enum.count(Mapping.list_filtered_destinations("", false, "", "", "", "")) == 2
     end
 
-    test "list_filtered_destinations/5 returns two 'less than one hour' destinations" do
+    test "list_filtered_destinations/6 returns two 'less than one hour' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :less_than_one_hour, [
         true,
         true,
@@ -230,7 +230,7 @@ defmodule Atlas.MappingTest do
                2
     end
 
-    test "list_filtered_destinations/5 returns two 'one to three hour' destinations" do
+    test "list_filtered_destinations/6 returns two 'one to three hour' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :one_to_three_hours, [
         true,
         true,
@@ -241,7 +241,7 @@ defmodule Atlas.MappingTest do
                2
     end
 
-    test "list_filtered_destinations/5 returns two 'more than three hour' destinations" do
+    test "list_filtered_destinations/6 returns two 'more than three hour' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :greater_than_three_hours, [
         true,
         true,
@@ -252,7 +252,7 @@ defmodule Atlas.MappingTest do
                2
     end
 
-    test "list_filtered_destinations/5 returns two 'car_friendly - true' destinations" do
+    test "list_filtered_destinations/6 returns two 'car_friendly - true' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :car_friendly, [
         true,
         true,
@@ -262,7 +262,7 @@ defmodule Atlas.MappingTest do
       assert Enum.count(Mapping.list_filtered_destinations("", "", "", true, "", "")) == 2
     end
 
-    test "list_filtered_destinations/5 returns two 'car_friendly - false' destinations" do
+    test "list_filtered_destinations/6 returns two 'car_friendly - false' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :car_friendly, [
         true,
         false,
@@ -272,7 +272,7 @@ defmodule Atlas.MappingTest do
       assert Enum.count(Mapping.list_filtered_destinations("", "", "", false, "", "")) == 2
     end
 
-    test "list_filtered_destinations/5 returns two 'off leash' destinations" do
+    test "list_filtered_destinations/6 returns two 'off leash' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :dogs_off_leash, [
         true,
         true,
@@ -282,7 +282,7 @@ defmodule Atlas.MappingTest do
       assert Enum.count(Mapping.list_filtered_destinations("", "", "", "", "off_leash", "")) == 2
     end
 
-    test "list_filtered_destinations/5 returns two 'on leash' destinations" do
+    test "list_filtered_destinations/6 returns two 'on leash' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :dogs_off_leash, [
         true,
         false,
@@ -292,7 +292,7 @@ defmodule Atlas.MappingTest do
       assert Enum.count(Mapping.list_filtered_destinations("", "", "", "", "on_leash", "")) == 2
     end
 
-    test "list_filtered_destinations/5 returns two 'no_dog' destinations" do
+    test "list_filtered_destinations/6 returns two 'no_dog' destinations" do
       custom_multi_destination_fixture(@valid_multi_attrs, :allows_dogs, [
         true,
         false,
@@ -300,6 +300,26 @@ defmodule Atlas.MappingTest do
       ])
 
       assert Enum.count(Mapping.list_filtered_destinations("", "", "", "", "no_dog", "")) == 2
+    end
+
+    test "list_filtered_destinations/6 returns two 'hike in' destinations" do
+      custom_multi_destination_fixture(@valid_multi_attrs, :hike_in, [
+        true,
+        true,
+        false
+      ])
+
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "", "", "", true)) == 2
+    end
+
+    test "list_filtered_destinations/6 returns two 'non-hike in' destinations" do
+      custom_multi_destination_fixture(@valid_multi_attrs, :hike_in, [
+        true,
+        false,
+        false
+      ])
+
+      assert Enum.count(Mapping.list_filtered_destinations("", "", "", "", "", false)) == 2
     end
 
     test "get_destination!/1 returns the destination with given id" do
