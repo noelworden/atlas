@@ -3,6 +3,28 @@ defmodule AtlasWeb.DestinationViewTest do
 
   alias AtlasWeb.DestinationView
 
+  describe "title_divider/2 returns correct string" do
+    test "returns '' if first argument is ''" do
+      assert DestinationView.title_divider("", []) == ""
+    end
+
+    test "returns '' if second argument is an empty list" do
+      assert DestinationView.title_divider("none", []) == ""
+    end
+
+    test "returns '' if first argument is a title, and second is an empty list" do
+      assert DestinationView.title_divider("No dogs", []) == ""
+    end
+
+    test "returns ' / ' if the second argument contains a title" do
+      assert DestinationView.title_divider("spring", ["Lake"]) == " / "
+    end
+
+    test "returns ' / ' if the second argument contains a title and empty strings" do
+      assert DestinationView.title_divider("spring", ["", "", "Lake", ""]) == " / "
+    end
+  end
+
   describe "page_title_season/1 returns correct string for filtered season" do
     test "returns 'All Spring' when 'spring' is passed" do
       assert DestinationView.page_title_season("spring") == "Spring"
@@ -47,25 +69,99 @@ defmodule AtlasWeb.DestinationViewTest do
     end
   end
 
-  describe "title_divider/2 returns correct string" do
-    test "returns '' if first argument is ''" do
-      assert DestinationView.title_divider("", []) == ""
+  describe "page_title_distance/1 returns correct string for filtered distance" do
+    test "returns '1 Hour or Less' when 'less_than_one' is passed " do
+      assert DestinationView.page_title_distance("less_than_one") == "1 Hour or Less"
     end
 
-    test "returns '' if second argument is an empty list" do
-      assert DestinationView.title_divider("none", []) == ""
+    test "returns '1 - 3 Hour' when 'one_to_three' is passed " do
+      assert DestinationView.page_title_distance("one_to_three") == "1 - 3 Hour"
     end
 
-    test "returns '' if first argument is a title, and second is an empty list" do
-      assert DestinationView.title_divider("No dogs", []) == ""
+    test "returns '3+ Hour' when 'more_than_three' is passed " do
+      assert DestinationView.page_title_distance("more_than_three") == "3+ Hour"
     end
 
-    test "returns ' / ' if the second argument contains a title" do
-      assert DestinationView.title_divider("spring", ["Lake"]) == " / "
+    test "returns '' when '' is passed " do
+      assert DestinationView.page_title_distance("") == ""
+    end
+  end
+
+  describe "page_title_vehicle/1 returns correct string for filtered vehicle" do
+    test "returns 'Car' when 'true' is passed " do
+      assert DestinationView.page_title_vehicle(true) == "Car"
     end
 
-    test "returns ' / ' if the second argument contains a title and empty strings" do
-      assert DestinationView.title_divider("spring", ["", "", "Lake", ""]) == " / "
+    test "returns 'Truck' when 'false' is passed " do
+      assert DestinationView.page_title_vehicle(false) == "Truck"
+    end
+
+    test "returns '' when '' is passed " do
+      assert DestinationView.page_title_vehicle("") == ""
+    end
+  end
+
+  describe "page_title_dog/1 returns correct string for filtered dog option" do
+    test "returns 'Off Leash' when 'off_leash' is passed " do
+      assert DestinationView.page_title_dog("off_leash") == "Off Leash"
+    end
+
+    test "returns 'On Leash' when 'on_leash' is passed " do
+      assert DestinationView.page_title_dog("on_leash") == "On Leash"
+    end
+
+    test "returns 'No Dog' when 'no_dog' is passed " do
+      assert DestinationView.page_title_dog("no_dog") == "No Dog"
+    end
+
+    test "returns '' when '' is passed " do
+      assert DestinationView.page_title_dog("") == ""
+    end
+  end
+
+  describe "page_title_hike/1 returns correct string for filtered hike option" do
+    test "returns 'Hiking' when 'true' is passed " do
+      assert DestinationView.page_title_hike(true) == "Hiking"
+    end
+
+    test "returns 'Non - Hiking' when 'false' is passed " do
+      assert DestinationView.page_title_hike(false) == "Non - Hiking"
+    end
+
+    test "returns '' when '' is passed " do
+      assert DestinationView.page_title_hike("") == ""
+    end
+  end
+
+  describe "page_title_camp/1 returns correct string for filtered camp option" do
+    test "returns 'Car or Backpack Camping' when 'car_backpack' is passed " do
+      assert DestinationView.page_title_camp("car_backpack") == "Car or Backpack Camping"
+    end
+
+    test "returns 'Car Camping' when 'car' is passed " do
+      assert DestinationView.page_title_camp("car") == "Car Camping"
+    end
+
+    test "returns 'Backpack Camping' when 'backpack' is passed " do
+      assert DestinationView.page_title_camp("backpack") == "Backpack Camping"
+    end
+
+    test "returns '' when '' is passed " do
+      assert DestinationView.page_title_camp("") == ""
+    end
+  end
+
+  describe "page_title_fee/1 returns correct string for filtered hike option" do
+    test "returns '' when 'true' is passed " do
+      assert DestinationView.page_title_fee(true) == ""
+    end
+
+    test "returns 'No Fee' when 'false' is passed " do
+      assert DestinationView.page_title_fee(false) == "No Fee"
+    end
+
+    test "returns '' when '' is passed " do
+      assert DestinationView.page_title_fee("") == ""
     end
   end
 
