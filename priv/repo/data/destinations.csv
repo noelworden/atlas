@@ -27,8 +27,8 @@ longitude,latitude,name,description,spinner_friendly,lake,less_than_one_hour,one
 -105.57883,40.86323,Creedmore Lakes,"Went 20200525. Small-ish trout, a good amount of people",true,true,false,true,false,false,true,true,true,false,true,true,false,true,true,false,false
 -105.661811,40.54268,Emmaline Lake,"Easy Hike for first half, camping, then harder hike to lake",true,true,false,true,false,true,true,true,true,false,true,true,false,false,true,false,false
 -105.584462,40.576429,Emmaline Lake Trailhead,"Easy Hike for first half, camping, then harder hike to lake",true,true,false,true,false,true,true,true,true,false,true,true,false,false,true,false,false
--105.6735,39.9214,Forest Lakes,Access off Rollins Pass Road for shorter hike,true,true,false,true,true,false,true,true,true,false,true,true,false,true,true,false,false
--105.6753,39.8975,Crater Lakes,,true,true,false,true,true,false,true,true,true,false,true,true,false,true,true,false,false
+-105.6735,39.9214,Forest Lakes,Access off Rollins Pass Road for shorter hike,true,true,false,true,false,true,true,true,true,false,true,true,false,true,true,false,false
+-105.6753,39.8975,Crater Lakes,,true,true,false,true,false,true,true,true,true,false,true,true,false,true,true,false,false
 -107.0907,39.8999,South Fork Derby Creek,Along trail/road to Mackinaw Lake. Road is a bit of a beast.,false,false,false,false,true,false,true,true,true,false,true,true,false,false,true,false,false
 -106.145433,39.539468,Officers Gulch,Ice fishing/ quick trout fishing,true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
 -106.329387,39.081412,Twin Lakes,"Ice fishing, lake trout, tough to find",true,true,false,true,false,true,false,true,false,true,true,true,true,false,false,false,true
@@ -102,7 +102,7 @@ longitude,latitude,name,description,spinner_friendly,lake,less_than_one_hour,one
 -107.2299,39.9799,Trappers Lake,"Fish North End (shallower) 13-15"" Nearly Pure Strain Colorado River Cutts. 15"" Brookies",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
 -107.2085,40.0401,Upper Skinny Fish Lake,Cutts,true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
 -107.2366,40.073,West Lost Lake,"Stubborn 12-15"" Brookies",true,true,false,false,true,true,false,true,true,false,true,true,false,true,true,false,false
--106.896955,40.582234,Christina SWA - Elk River,https://cpw.state.co.us/learn/Maps/ChristinaSWA_geo.pdf look into access of the south portion,true,false,false,true,true,true,false,true,false,false,true,true,false,true,true,false,false
+-106.896955,40.582234,Christina SWA - Elk River,https://cpw.state.co.us/learn/Maps/ChristinaSWA_geo.pdf look into access of the south portion,true,false,false,false,true,true,false,true,false,false,true,true,false,true,true,false,false
 -106.995159,40.84148,Hans Peak Lake,"Fee area, good fish, check adventure notes for specs",true,true,false,false,true,true,false,true,false,true,true,true,true,true,false,true,true
 -106.888617,40.791189,Pearl Lake State Park,"State Park, only fished one evening",true,true,false,false,true,true,false,true,false,true,true,true,true,true,false,true,true
 -107.85963,38.77112,Gunnison River Spot 01,"Fished on 20201010, tough day, but holds fish. On the cusp of too burly for car.",true,false,false,false,true,true,false,true,true,true,true,true,false,true,false,false,false
@@ -115,4 +115,4 @@ longitude,latitude,name,description,spinner_friendly,lake,less_than_one_hour,one
 -105.517344,38.937268,Eleven Mile Reservoir - Marina Area,"Good ice fishing in 2019, off northern campgrounds of east shore.",true,true,false,true,false,true,false,true,false,true,true,true,true,true,true,true,true
 -105.563907,38.947531,Eleven Mile Reservoir - Marina Area,"Eleven Mile Reservoir - Marina Area,Good ice fishing early in 2019",true,true,false,true,false,true,false,true,false,true,true,true,true,true,true,true,true
 -105.201564,40.061532,Twin Lakes - Boulder,"Only heard of it, have not been",true,true,true,false,false,true,false,true,true,true,true,true,true,false,true,false,true
--106.100286,39.385325,Blue Lakes,"Saw on map, have not been",true,true,false,true,false,true,false,true,false,true,true,true,true,false,true,false,true
+-106.100286,39.385325,Blue Lakes,"Saw on map, have not been. No ice fishing, no winter maintenance to lake",true,true,false,true,false,true,false,true,false,true,true,true,false,false,true,false,false
