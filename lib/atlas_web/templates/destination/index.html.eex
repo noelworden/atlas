@@ -9,7 +9,9 @@
   <%= title_divider(@vehicle, @dog)%>
   <%= page_title_dog(@dog)%>
   <%= title_divider(@dog, @hike)%>
-  <%= page_title_hike(@hike)%> Destinations
+  <%= page_title_hike(@hike)%>
+  <%= title_divider(@hike, @camp)%>
+  <%= page_title_camp(@camp)%> Destinations
 </h1>
 <div id="map" class="map--large">
   <script>

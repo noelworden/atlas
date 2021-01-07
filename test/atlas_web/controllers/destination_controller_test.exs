@@ -89,7 +89,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -108,7 +109,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -125,7 +127,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -142,7 +145,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -159,7 +163,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -176,7 +181,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -195,7 +201,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -212,7 +219,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -231,7 +239,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "less_than_one",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -248,7 +257,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "one_to_three",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -265,7 +275,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "more_than_three",
             vehicle: "",
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -284,7 +295,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: true,
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -301,7 +313,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: false,
             dog: "",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -320,7 +333,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "off_leash",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -337,7 +351,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "on_leash",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -354,7 +369,8 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "no_dog",
-            hike: ""
+            hike: "",
+            camp: ""
           )
         )
 
@@ -373,11 +389,12 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: true
+            hike: true,
+            camp: ""
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  Hiking Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h1>\n  All \nHiking   Destinations\n</h1>"
     end
 
     test "list only destinations that do not require hiking", %{conn: conn} do
@@ -390,16 +407,74 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "",
             vehicle: "",
             dog: "",
-            hike: false
+            hike: false,
+            camp: ""
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  Non - Hiking Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h1>\n  All \nNon - Hiking   Destinations\n</h1>"
+    end
+  end
+
+  describe "index showing only filtered by camping" do
+    test "list only destinations that have car or backpack camping", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: "",
+            hike: "",
+            camp: "car_backpack"
+          )
+        )
+
+      assert html_response(conn, 200) =~
+               "<h1>\n  All \n  Car or Backpack Camping Destinations\n</h1>"
+    end
+
+    test "list only destinations that have car camping", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: "",
+            hike: "",
+            camp: "car"
+          )
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  Car Camping Destinations\n</h1>"
+    end
+
+    test "list only destinations that have backpack camping", %{conn: conn} do
+      conn =
+        get(
+          conn,
+          Routes.destination_path(conn, :index,
+            season: "",
+            lake: "",
+            distance: "",
+            vehicle: "",
+            dog: "",
+            hike: "",
+            camp: "backpack"
+          )
+        )
+
+      assert html_response(conn, 200) =~ "<h1>\n  All \n  Backpack Camping Destinations\n</h1>"
     end
   end
 
   describe "index showing by season, lake, distance, vehicle, dog, and hike filter" do
-    test "lists all spring filtered, lake true, distance one to three, vehicle true, dog off leash, hike true",
+    test "lists all spring filtered, lake true, distance one to three, vehicle true, dog off leash, hike true, car or backpack camping",
          %{conn: conn} do
       conn =
         get(
@@ -410,15 +485,16 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "one_to_three",
             vehicle: true,
             dog: "off_leash",
-            hike: true
+            hike: true,
+            camp: "car_backpack"
           )
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Spring\n / Lake / 1 - 3 Hour / Car / Off Leash /   Hiking Destinations\n</h1>"
+               "<h1>\n  All Spring\n / Lake / 1 - 3 Hour / Car / Off Leash / Hiking /   Car or Backpack Camping Destinations\n</h1>"
     end
 
-    test "lists fall filtered, lake false, distance of more than three, vehicle false, no dog, hike false",
+    test "lists fall filtered, lake false, distance of more than three, vehicle false, no dog, hike false, backpack camping",
          %{conn: conn} do
       conn =
         get(
@@ -429,12 +505,13 @@ defmodule AtlasWeb.DestinationControllerTest do
             distance: "more_than_three",
             vehicle: false,
             dog: "no_dog",
-            hike: false
+            hike: false,
+            camp: "backpack"
           )
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Fall\n / River &amp; Stream / 3+ Hour / Truck / No Dog /   Non - Hiking Destinations\n</h1>"
+               "h1>\n  All Fall\n / River &amp; Stream / 3+ Hour / Truck / No Dog / Non - Hiking /   Backpack Camping Destinations\n</h1>"
     end
   end
 
