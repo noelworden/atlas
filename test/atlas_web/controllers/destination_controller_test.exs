@@ -95,7 +95,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \n   Destinations\n</h3>"
     end
   end
 
@@ -116,7 +116,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All Spring\n   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All Spring\n   Destinations\n</h3>"
     end
 
     test "lists summer filtered destinations with no lake params", %{conn: conn} do
@@ -135,7 +135,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All Summer\n   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All Summer\n   Destinations\n</h3>"
     end
 
     test "lists fall filtered destinations with no lake params", %{conn: conn} do
@@ -154,7 +154,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All Fall\n   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All Fall\n   Destinations\n</h3>"
     end
 
     test "lists winter filtered destinations with no lake params", %{conn: conn} do
@@ -173,7 +173,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All Winter\n   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All Winter\n   Destinations\n</h3>"
     end
 
     test "lists ice fishing filtered destinations with no lake params", %{conn: conn} do
@@ -192,7 +192,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All Ice Fishing\n   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All Ice Fishing\n   Destinations\n</h3>"
     end
   end
 
@@ -213,7 +213,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nLake   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nLake   Destinations\n</h3>"
     end
 
     test "lists lake false filtered destinations with no season params", %{conn: conn} do
@@ -232,7 +232,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nRiver &amp; Stream   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nRiver &amp; Stream   Destinations\n</h3>"
     end
   end
 
@@ -253,7 +253,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n1 Hour or Less   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \n1 Hour or Less   Destinations\n</h3>"
     end
 
     test "list only destinations that are one to three hours", %{conn: conn} do
@@ -272,7 +272,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n1 - 3 Hour   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \n1 - 3 Hour   Destinations\n</h3>"
     end
 
     test "list only destinations that are more than three hours", %{conn: conn} do
@@ -291,7 +291,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n3+ Hour   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \n3+ Hour   Destinations\n</h3>"
     end
   end
 
@@ -312,7 +312,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nCar   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nCar   Destinations\n</h3>"
     end
 
     test "list only destinations that are not car friendly", %{conn: conn} do
@@ -331,7 +331,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nTruck   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nTruck   Destinations\n</h3>"
     end
   end
 
@@ -352,7 +352,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nOff Leash   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nOff Leash   Destinations\n</h3>"
     end
 
     test "list only destinations that allow dogs and on leash", %{conn: conn} do
@@ -371,7 +371,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nOn Leash   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nOn Leash   Destinations\n</h3>"
     end
 
     test "list only destinations that do not allow dogs", %{conn: conn} do
@@ -390,7 +390,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nNo Dog   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nNo Dog   Destinations\n</h3>"
     end
   end
 
@@ -411,7 +411,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nHiking   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nHiking   Destinations\n</h3>"
     end
 
     test "list only destinations that do not require hiking", %{conn: conn} do
@@ -430,7 +430,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nNon - Hiking   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nNon - Hiking   Destinations\n</h3>"
     end
   end
 
@@ -452,7 +452,7 @@ defmodule AtlasWeb.DestinationControllerTest do
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All \nCar or Backpack Camping   Destinations\n</h1>"
+               "<h3>\n  All \nCar or Backpack Camping   Destinations\n</h3>"
     end
 
     test "list only destinations that have car camping", %{conn: conn} do
@@ -471,7 +471,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nCar Camping   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nCar Camping   Destinations\n</h3>"
     end
 
     test "list only destinations that have backpack camping", %{conn: conn} do
@@ -490,7 +490,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \nBackpack Camping   Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \nBackpack Camping   Destinations\n</h3>"
     end
 
     test "list only destinations that are 'no fee'", %{conn: conn} do
@@ -509,7 +509,7 @@ defmodule AtlasWeb.DestinationControllerTest do
           )
         )
 
-      assert html_response(conn, 200) =~ "<h1>\n  All \n  No Fee Destinations\n</h1>"
+      assert html_response(conn, 200) =~ "<h3>\n  All \n  No Fee Destinations\n</h3>"
     end
   end
 
@@ -532,7 +532,7 @@ defmodule AtlasWeb.DestinationControllerTest do
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Spring\n / Lake / 1 - 3 Hour / Car / Off Leash / Hiking / Car or Backpack Camping /   No Fee Destinations\n</h1>"
+               "<h3>\n  All Spring\n / Lake / 1 - 3 Hour / Car / Off Leash / Hiking / Car or Backpack Camping /   No Fee Destinations\n</h3>"
     end
 
     test "lists fall filtered, lake false, distance of more than three, vehicle false, no dog, hike false, backpack camping",
@@ -553,7 +553,7 @@ defmodule AtlasWeb.DestinationControllerTest do
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Fall\n / River &amp; Stream / 3+ Hour / Truck / No Dog / Non - Hiking / Backpack Camping   Destinations\n</h1>"
+               "<h3>\n  All Fall\n / River &amp; Stream / 3+ Hour / Truck / No Dog / Non - Hiking / Backpack Camping   Destinations\n</h3>"
     end
 
     test "lists summer filtered, vehicle true, car camping",
@@ -574,7 +574,7 @@ defmodule AtlasWeb.DestinationControllerTest do
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All Summer\n / Car / Car Camping   Destinations\n</h1>"
+               "<h3>\n  All Summer\n / Car / Car Camping   Destinations\n</h3>"
     end
 
     test "lists lake true, dog off leash, no fee",
@@ -595,7 +595,7 @@ defmodule AtlasWeb.DestinationControllerTest do
         )
 
       assert html_response(conn, 200) =~
-               "<h1>\n  All \nLake / Car / Off Leash /   No Fee Destinations\n</h1>"
+               "<h3>\n  All \nLake / Car / Off Leash /   No Fee Destinations\n</h3>"
     end
   end
 

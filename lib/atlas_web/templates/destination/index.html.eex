@@ -1,4 +1,4 @@
-<h1>
+<h3>
   All <%= page_title_season(@season)%>
   <%= title_divider(@season, [@lake, @distance, @vehicle, @dog, @hike, @camp, @fee])%>
   <%= page_title_lake(@lake)%>
@@ -14,7 +14,7 @@
   <%= page_title_camp(@camp)%>
   <%= title_divider(@camp, [@fee])%>
   <%= page_title_fee(@fee)%> Destinations
-</h1>
+</h3>
 <div id="map" class="map--large">
   <script>
     window.Destination = {
