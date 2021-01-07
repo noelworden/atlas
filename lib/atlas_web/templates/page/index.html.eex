@@ -16,6 +16,9 @@
       <%= select(f, :dog, @dog_options,  prompt: "Choose dog options", class: "filter-element")%>
     </div>
     <div>
+      <%= select(f, :hike, @hike_options,  prompt: "Choose hiking options", class: "filter-element")%>
+    </div>
+    <div>
       <%= submit "Search", class: "filter-element"%>
     </div>
   <% end %>

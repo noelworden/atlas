@@ -7,7 +7,9 @@
   <%= title_divider(@distance, @vehicle)%>
   <%= page_title_vehicle(@vehicle)%> 
   <%= title_divider(@vehicle, @dog)%>
-  <%= page_title_dog(@dog)%> Destinations
+  <%= page_title_dog(@dog)%>
+  <%= title_divider(@dog, @hike)%>
+  <%= page_title_hike(@hike)%> Destinations
 </h1>
 <div id="map" class="map--large">
   <script>
