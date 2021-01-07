@@ -5,13 +5,15 @@
   <%= title_divider(@lake, @distance)%>
   <%= page_title_distance(@distance)%>
   <%= title_divider(@distance, @vehicle)%>
-  <%= page_title_vehicle(@vehicle)%> 
+  <%= page_title_vehicle(@vehicle)%>
   <%= title_divider(@vehicle, @dog)%>
   <%= page_title_dog(@dog)%>
   <%= title_divider(@dog, @hike)%>
   <%= page_title_hike(@hike)%>
   <%= title_divider(@hike, @camp)%>
-  <%= page_title_camp(@camp)%> Destinations
+  <%= page_title_camp(@camp)%>
+  <%= title_divider(@camp, @fee)%>
+  <%= page_title_fee(@fee)%> Destinations
 </h1>
 <div id="map" class="map--large">
   <script>

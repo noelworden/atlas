@@ -22,6 +22,9 @@
       <%= select(f, :camp, @camp_options,  prompt: "Choose camping options", class: "filter-element")%>
     </div>
     <div>
+      <%= select(f, :fee, @fee_options,  prompt: "Choose fee options", class: "filter-element")%>
+    </div>
+    <div>
       <%= submit "Search", class: "filter-element"%>
     </div>
   <% end %>
