@@ -1,10 +1,13 @@
 defmodule AtlasWeb.DestinationView do
   use AtlasWeb, :view
 
-  def title_divider("", ""), do: ""
-  def title_divider(_, ""), do: ""
-  def title_divider("", _), do: ""
-  def title_divider(_, _), do: " / "
+  def title_divider(title_before, title_after_list) do
+    cond do
+      title_before == "" -> ""
+      Enum.any?(title_after_list, &(&1 != "")) -> " / "
+      true -> ""
+    end
+  end
 
   def page_title_season(season \\ "") do
     case season do
