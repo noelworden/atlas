@@ -206,9 +206,9 @@ defmodule Atlas.Mapping do
 
   defp dog_filter(query, dog) do
     case dog do
-      "off_leash" -> from(d in Destination, where: d.allows_dogs and d.dogs_off_leash)
-      "on_leash" -> from(d in Destination, where: d.allows_dogs and not d.dogs_off_leash)
-      "no_dog" -> from(d in Destination, where: not d.allows_dogs)
+      "off_leash" -> from(d in query, where: d.allows_dogs and d.dogs_off_leash)
+      "on_leash" -> from(d in query, where: d.allows_dogs and not d.dogs_off_leash)
+      "no_dog" -> from(d in query, where: not d.allows_dogs)
       _ -> query
     end
   end
@@ -223,9 +223,9 @@ defmodule Atlas.Mapping do
 
   defp camp_filter(query, camp) do
     case camp do
-      "car_backpack" -> from(d in Destination, where: d.car_camp or d.backpack_camp)
-      "car" -> from(d in Destination, where: d.car_camp)
-      "backpack" -> from(d in Destination, where: d.backpack_camp)
+      "car_backpack" -> from(d in query, where: d.car_camp or d.backpack_camp)
+      "car" -> from(d in query, where: d.car_camp)
+      "backpack" -> from(d in query, where: d.backpack_camp)
       _ -> query
     end
   end
