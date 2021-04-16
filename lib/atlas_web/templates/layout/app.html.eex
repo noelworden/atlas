@@ -13,7 +13,7 @@
       <section class="container">
         <div>
           <span><a href="/">Home</a></span>
-          ||
+          |
           <span><%= link "Create New Destination", to: Routes.destination_path(@conn, :new) %></span>
           <%= if @current_user do %>
             ||
