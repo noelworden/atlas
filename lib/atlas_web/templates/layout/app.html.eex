@@ -15,6 +15,12 @@
           <span><a href="/">Home</a></span>
           ||
           <span><%= link "Create New Destination", to: Routes.destination_path(@conn, :new) %></span>
+          <%= if @current_user do %>
+            ||
+            <span> <%= link "Edit account", to: Routes.pow_registration_path(@conn, :edit) %>
+            ||
+            <span><%= link "Sign out", to: Routes.pow_session_path(@conn, :delete), method: :delete %>
+          <% end %>
         </div>
           <h1>Angling Atlas</h1>
       </section>
