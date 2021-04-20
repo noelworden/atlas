@@ -118,6 +118,9 @@ To run only a specific test within a test file:
 
 ### Seeding the database
   - `gigalixir run -- mix run priv/repo/seeds.exs`
+
+### Run IEx in remote app
+  - `gigalixir ps:remote_console`
 ----
 ## Viewing the app
 ### To open the app in a browser
