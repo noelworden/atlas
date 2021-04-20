@@ -78,12 +78,19 @@ defmodule AtlasWeb.DestinationControllerTest do
     destination
   end
 
+  setup %{conn: conn} do
+    user = %Atlas.Users.User{email: "test@test.com"}
+    authed_conn = Pow.Plug.assign_current_user(conn, user, [])
+
+    {:ok, authed_conn: authed_conn}
+  end
+
   describe "index showing with no filtering" do
-    test "lists unfiltered destinations", %{conn: conn} do
+    test "lists unfiltered destinations", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -100,11 +107,13 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by season" do
-    test "lists spring filtered destinations with no lake params", %{conn: conn} do
+    test "lists spring filtered destinations with no lake params", %{
+      authed_conn: authed_connauthed_conn
+    } do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_connauthed_conn,
+          Routes.destination_path(authed_connauthed_conn, :index,
             season: "spring",
             lake: "",
             distance: "",
@@ -119,11 +128,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All Spring\n   Destinations\n</h3>"
     end
 
-    test "lists summer filtered destinations with no lake params", %{conn: conn} do
+    test "lists summer filtered destinations with no lake params", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "summer",
             lake: "",
             distance: "",
@@ -138,11 +147,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All Summer\n   Destinations\n</h3>"
     end
 
-    test "lists fall filtered destinations with no lake params", %{conn: conn} do
+    test "lists fall filtered destinations with no lake params", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "fall",
             lake: "",
             distance: "",
@@ -157,11 +166,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All Fall\n   Destinations\n</h3>"
     end
 
-    test "lists winter filtered destinations with no lake params", %{conn: conn} do
+    test "lists winter filtered destinations with no lake params", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "winter",
             lake: "",
             distance: "",
@@ -176,11 +185,13 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All Winter\n   Destinations\n</h3>"
     end
 
-    test "lists ice fishing filtered destinations with no lake params", %{conn: conn} do
+    test "lists ice fishing filtered destinations with no lake params", %{
+      authed_conn: authed_conn
+    } do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "ice",
             lake: "",
             distance: "",
@@ -197,11 +208,13 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by lake" do
-    test "lists lake true filtered destinations with no season params", %{conn: conn} do
+    test "lists lake true filtered destinations with no season params", %{
+      authed_conn: authed_conn
+    } do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: true,
             distance: "",
@@ -216,11 +229,13 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nLake   Destinations\n</h3>"
     end
 
-    test "lists lake false filtered destinations with no season params", %{conn: conn} do
+    test "lists lake false filtered destinations with no season params", %{
+      authed_conn: authed_conn
+    } do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: false,
             distance: "",
@@ -237,11 +252,11 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by distance" do
-    test "list only destinations that are one hour or less", %{conn: conn} do
+    test "list only destinations that are one hour or less", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "less_than_one",
@@ -256,11 +271,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \n1 Hour or Less   Destinations\n</h3>"
     end
 
-    test "list only destinations that are one to three hours", %{conn: conn} do
+    test "list only destinations that are one to three hours", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "one_to_three",
@@ -275,11 +290,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \n1 - 3 Hour   Destinations\n</h3>"
     end
 
-    test "list only destinations that are more than three hours", %{conn: conn} do
+    test "list only destinations that are more than three hours", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "more_than_three",
@@ -296,11 +311,11 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by vehicle" do
-    test "list only destinations that are car friendly", %{conn: conn} do
+    test "list only destinations that are car friendly", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -315,11 +330,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nCar   Destinations\n</h3>"
     end
 
-    test "list only destinations that are not car friendly", %{conn: conn} do
+    test "list only destinations that are not car friendly", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -336,11 +351,11 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by dog options" do
-    test "list only destinations that allow dogs and off leash", %{conn: conn} do
+    test "list only destinations that allow dogs and off leash", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -355,11 +370,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nOff Leash   Destinations\n</h3>"
     end
 
-    test "list only destinations that allow dogs and on leash", %{conn: conn} do
+    test "list only destinations that allow dogs and on leash", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -374,11 +389,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nOn Leash   Destinations\n</h3>"
     end
 
-    test "list only destinations that do not allow dogs", %{conn: conn} do
+    test "list only destinations that do not allow dogs", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -395,11 +410,11 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by hike" do
-    test "list only destinations that require hiking", %{conn: conn} do
+    test "list only destinations that require hiking", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -414,11 +429,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nHiking   Destinations\n</h3>"
     end
 
-    test "list only destinations that do not require hiking", %{conn: conn} do
+    test "list only destinations that do not require hiking", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -435,11 +450,11 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "index showing only filtered by camping" do
-    test "list only destinations that have car or backpack camping", %{conn: conn} do
+    test "list only destinations that have car or backpack camping", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -455,11 +470,11 @@ defmodule AtlasWeb.DestinationControllerTest do
                "<h3>\n  All \nCar or Backpack Camping   Destinations\n</h3>"
     end
 
-    test "list only destinations that have car camping", %{conn: conn} do
+    test "list only destinations that have car camping", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -474,11 +489,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nCar Camping   Destinations\n</h3>"
     end
 
-    test "list only destinations that have backpack camping", %{conn: conn} do
+    test "list only destinations that have backpack camping", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -493,11 +508,11 @@ defmodule AtlasWeb.DestinationControllerTest do
       assert html_response(conn, 200) =~ "<h3>\n  All \nBackpack Camping   Destinations\n</h3>"
     end
 
-    test "list only destinations that are 'no fee'", %{conn: conn} do
+    test "list only destinations that are 'no fee'", %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "",
             distance: "",
@@ -515,11 +530,11 @@ defmodule AtlasWeb.DestinationControllerTest do
 
   describe "index showing by different filtering options" do
     test "lists all spring filtered, lake true, distance one to three, vehicle true, dog off leash, hike true, car or backpack camping, with fee",
-         %{conn: conn} do
+         %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "spring",
             lake: true,
             distance: "one_to_three",
@@ -536,11 +551,11 @@ defmodule AtlasWeb.DestinationControllerTest do
     end
 
     test "lists fall filtered, lake false, distance of more than three, vehicle false, no dog, hike false, backpack camping",
-         %{conn: conn} do
+         %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "fall",
             lake: false,
             distance: "more_than_three",
@@ -557,11 +572,11 @@ defmodule AtlasWeb.DestinationControllerTest do
     end
 
     test "lists summer filtered, vehicle true, car camping",
-         %{conn: conn} do
+         %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "summer",
             lake: "",
             distance: "",
@@ -578,11 +593,11 @@ defmodule AtlasWeb.DestinationControllerTest do
     end
 
     test "lists lake true, dog off leash, no fee",
-         %{conn: conn} do
+         %{authed_conn: authed_conn} do
       conn =
         get(
-          conn,
-          Routes.destination_path(conn, :index,
+          authed_conn,
+          Routes.destination_path(authed_conn, :index,
             season: "",
             lake: "true",
             distance: "",
@@ -600,25 +615,32 @@ defmodule AtlasWeb.DestinationControllerTest do
   end
 
   describe "new destination" do
-    test "renders form", %{conn: conn} do
-      conn = get(conn, Routes.destination_path(conn, :new))
+    test "renders form", %{authed_conn: authed_conn} do
+      conn = get(authed_conn, Routes.destination_path(authed_conn, :new))
       assert html_response(conn, 200) =~ "New Destination"
     end
   end
 
   describe "create destination" do
-    test "redirects to show when data is valid", %{conn: conn} do
-      conn = post(conn, Routes.destination_path(conn, :create), destination: @create_attrs)
+    test "redirects to show when data is valid", %{authed_conn: authed_conn} do
+      conn =
+        post(authed_conn, Routes.destination_path(authed_conn, :create),
+          destination: @create_attrs
+        )
 
       assert %{id: id} = redirected_params(conn)
       assert redirected_to(conn) == Routes.destination_path(conn, :show, id)
 
-      conn = get(conn, Routes.destination_path(conn, :show, id))
+      conn = get(authed_conn, Routes.destination_path(authed_conn, :show, id))
       assert html_response(conn, 200) =~ @create_attrs.name
     end
 
-    test "renders errors when data is invalid", %{conn: conn} do
-      conn = post(conn, Routes.destination_path(conn, :create), destination: @invalid_attrs)
+    test "renders errors when data is invalid", %{authed_conn: authed_conn} do
+      conn =
+        post(authed_conn, Routes.destination_path(authed_conn, :create),
+          destination: @invalid_attrs
+        )
+
       assert html_response(conn, 200) =~ "New Destination"
     end
   end
@@ -627,10 +649,10 @@ defmodule AtlasWeb.DestinationControllerTest do
     setup [:create_destination]
 
     test "renders form for editing chosen destination", %{
-      conn: conn,
+      authed_conn: authed_conn,
       destination: destination
     } do
-      conn = get(conn, Routes.destination_path(conn, :edit, destination))
+      conn = get(authed_conn, Routes.destination_path(authed_conn, :edit, destination))
       assert html_response(conn, 200) =~ "Edit Destination"
     end
   end
@@ -638,22 +660,26 @@ defmodule AtlasWeb.DestinationControllerTest do
   describe "update destination" do
     setup [:create_destination]
 
-    test "redirects when data is valid", %{conn: conn, destination: destination} do
+    test "redirects when data is valid", %{authed_conn: authed_conn, destination: destination} do
       conn =
-        put(conn, Routes.destination_path(conn, :update, destination), destination: @update_attrs)
+        put(authed_conn, Routes.destination_path(authed_conn, :update, destination),
+          destination: @update_attrs
+        )
 
       assert redirected_to(conn) == Routes.destination_path(conn, :show, destination)
 
-      conn = get(conn, Routes.destination_path(conn, :show, destination))
+      conn = get(authed_conn, Routes.destination_path(authed_conn, :show, destination))
       assert html_response(conn, 200) =~ "some updated description"
     end
 
     test "renders errors when data is invalid", %{
-      conn: conn,
+      authed_conn: authed_conn,
       destination: destination
     } do
       conn =
-        put(conn, Routes.destination_path(conn, :update, destination), destination: @invalid_attrs)
+        put(authed_conn, Routes.destination_path(authed_conn, :update, destination),
+          destination: @invalid_attrs
+        )
 
       assert html_response(conn, 200) =~ "Edit Destination"
     end
@@ -662,12 +688,12 @@ defmodule AtlasWeb.DestinationControllerTest do
   describe "delete destination" do
     setup [:create_destination]
 
-    test "deletes chosen destination", %{conn: conn, destination: destination} do
-      conn = delete(conn, Routes.destination_path(conn, :delete, destination))
+    test "deletes chosen destination", %{authed_conn: authed_conn, destination: destination} do
+      conn = delete(authed_conn, Routes.destination_path(authed_conn, :delete, destination))
       assert redirected_to(conn) == "/"
 
       assert_error_sent 404, fn ->
-        get(conn, Routes.destination_path(conn, :show, destination))
+        get(authed_conn, Routes.destination_path(authed_conn, :show, destination))
       end
     end
   end

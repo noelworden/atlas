@@ -12,3 +12,13 @@
 
 # Seed `destinations` table from CSV
 Atlas.Mapping.CSVUtil.csv_row_to_table_record("priv/repo/data/destinations.csv")
+
+user_changeset = %{
+  email: "test@test.com",
+  password: "password",
+  password_confirmation: "password"
+}
+
+%User{}
+|> User.changeset(user_changeset)
+|> Repo.insert()

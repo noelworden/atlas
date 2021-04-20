@@ -1,5 +1,6 @@
 defmodule AtlasWeb.Router do
   use AtlasWeb, :router
+  use Pow.Phoenix.Router
 
   pipeline :browser do
     plug :accepts, ["html"]
@@ -13,8 +14,27 @@ defmodule AtlasWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/", AtlasWeb do
+  pipeline :protected do
+    plug Pow.Plug.RequireAuthenticated,
+      error_handler: Pow.Phoenix.PlugErrorHandler
+  end
+
+  scope "/" do
     pipe_through :browser
+
+    pow_session_routes()
+  end
+
+  scope "/", Pow.Phoenix, as: "pow" do
+    pipe_through [:browser, :protected]
+
+    resources "/registration", RegistrationController,
+      singleton: true,
+      only: [:edit, :update, :delete]
+  end
+
+  scope "/", AtlasWeb do
+    pipe_through [:browser, :protected]
 
     get "/", PageController, :index
     resources "/destinations", DestinationController
