@@ -125,3 +125,11 @@ To run only a specific test within a test file:
 ## Viewing the app
 ### To open the app in a browser
 - `gigalixir open`
+
+## SSL Troubleshooting
+- 20210901 renewed the name.com domain and then the SSL (https) was not available
+- The fix
+  - delete and reset the `www` domain
+  - removed the domain via the dashboard
+  - `gigalixir domains:add www.theanglingatlas.com` 
+  - the `www` domain points to `theanglingatlas.com` as a `CNAME` via name.com
