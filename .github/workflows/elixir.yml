@@ -84,19 +84,19 @@ jobs:
         elixir-version: '1.11.4'
         otp-version: '23'
 
-    - name: Restore Mix dependencies cache
-      uses: actions/cache@v3.3.2
-      with:
-        path: deps
-        key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-mix-
+    # - name: Restore Mix dependencies cache
+    #   uses: actions/cache@v3.3.2
+    #   with:
+    #     path: deps
+    #     key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+    #     restore-keys: ${{ runner.os }}-mix-
 
-    - name: Restore build cache
-      uses: actions/cache@v3.3.2
-      with:
-        path: _build
-        key: ${{ runner.os }}-build-${{ hashFiles('**/mix.lock') }}
-        restore-keys: ${{ runner.os }}-build-
+    # - name: Restore build cache
+    #   uses: actions/cache@v3.3.2
+    #   with:
+    #     path: _build
+    #     key: ${{ runner.os }}-build-${{ hashFiles('**/mix.lock') }}
+    #     restore-keys: ${{ runner.os }}-build-
 
     - name: Install dependencies
       run: mix deps.get
