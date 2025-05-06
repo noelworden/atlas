@@ -5,7 +5,7 @@ defmodule Atlas.MixProject do
     [
       app: :atlas,
       version: "0.1.0",
-      elixir: "~> 1.11.4",
+      elixir: "~> 1.12.3",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -45,6 +45,8 @@ defmodule Atlas.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.11", override: true},
+      {:plug_crypto, "~> 1.2", override: true},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:nimble_csv, "~> 1.1.0"},
       {:pow, "~> 1.0.23"}

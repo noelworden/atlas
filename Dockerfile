@@ -1,6 +1,6 @@
-FROM bitwalker/alpine-elixir-phoenix:1.11.4
+FROM bitwalker/alpine-elixir-phoenix:1.12.3
 
-RUN apk add --no-cache build-base python2
+RUN apk add --no-cache build-base python3
 
 RUN mkdir /app
 WORKDIR /app
