@@ -85,14 +85,14 @@ jobs:
         otp-version: '23'
 
     - name: Restore Mix dependencies cache
-      uses: actions/cache@6be2772aa5c23f23407a4db5dc2e37b66f6a9861
+      uses: actions/cache@v3.3.2
       with:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
 
     - name: Restore build cache
-      uses: actions/cache@6be2772aa5c23f23407a4db5dc2e37b66f6a9861
+      uses: actions/cache@v3.3.2
       with:
         path: _build
         key: ${{ runner.os }}-build-${{ hashFiles('**/mix.lock') }}
