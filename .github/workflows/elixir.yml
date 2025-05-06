@@ -1,3 +1,51 @@
+# name: Elixir CI
+
+# on:
+#   push:
+#     branches: [ main ]
+#   pull_request:
+#     branches: [ main ]
+
+# jobs:
+#   test:
+#     name: Build & Test
+#     runs-on: ubuntu-latest
+
+#     services:
+#       db:
+#         image: postgres
+#         ports: ['5432:5432']
+#         env:
+#           POSTGRES_PASSWORD: postgres
+#         options: >-
+#           --health-cmd pg_isready
+#           --health-interval 10s
+#           --health-timeout 5s
+#           --health-retries 5
+#     steps:
+#     - uses: actions/checkout@v2
+#     - name: Set up Elixir
+#       uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
+#       with:
+#         elixir-version: '1.11.4' # Define the elixir version [required]
+#         otp-version: '23' # Define the OTP version [required]
+#     - name: Restore dependencies cache
+#       uses: actions/cache@2.1.8
+#       with:
+#         path: deps
+#         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+#         restore-keys: ${{ runner.os }}-mix-
+#     - name: Install dependencies
+#       run: mix deps.get
+#     - name: Run tests
+#       run: mix test
+#       env:
+#         DB_HOSTNAME: "localhost"
+#     - name: Check Formatting
+#       run: mix format --check-formatted
+#     - name: Run Credo
+#       run: mix credo --strict
+
 name: Elixir CI
 
 on:
@@ -22,26 +70,44 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        persist-credentials: false
+      # SHA: ee0669bd1cc54295c223e0bb666b733df41de1c5
+
     - name: Set up Elixir
       uses: erlef/setup-elixir@885971a72ed1f9240973bd92ab57af8c1aa68f24
       with:
-        elixir-version: '1.11.4' # Define the elixir version [required]
-        otp-version: '23' # Define the OTP version [required]
-    - name: Restore dependencies cache
-      uses: actions/cache@2.1.8
+        elixir-version: '1.11.4'
+        otp-version: '23'
+
+    - name: Restore Mix dependencies cache
+      uses: actions/cache@6be2772aa5c23f23407a4db5dc2e37b66f6a9861
       with:
         path: deps
         key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
         restore-keys: ${{ runner.os }}-mix-
+
+    - name: Restore build cache
+      uses: actions/cache@6be2772aa5c23f23407a4db5dc2e37b66f6a9861
+      with:
+        path: _build
+        key: ${{ runner.os }}-build-${{ hashFiles('**/mix.lock') }}
+        restore-keys: ${{ runner.os }}-build-
+
     - name: Install dependencies
       run: mix deps.get
+
     - name: Run tests
       run: mix test
       env:
         DB_HOSTNAME: "localhost"
+
     - name: Check Formatting
       run: mix format --check-formatted
+
     - name: Run Credo
       run: mix credo --strict
