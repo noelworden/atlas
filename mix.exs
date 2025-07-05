@@ -5,7 +5,7 @@ defmodule Atlas.MixProject do
     [
       app: :atlas,
       version: "0.1.0",
-      elixir: "~> 1.11.4",
+      elixir: "~> 1.12.3",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       start_permanent: Mix.env() == :prod,
@@ -33,7 +33,7 @@ defmodule Atlas.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.5.4"},
+      {:phoenix, "~> 1.5.13"},
       {:phoenix_ecto, "~> 4.1"},
       {:ecto_sql, "~> 3.4"},
       {:postgrex, ">= 0.0.0"},
@@ -47,7 +47,8 @@ defmodule Atlas.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:nimble_csv, "~> 1.1.0"},
-      {:pow, "~> 1.0.23"}
+      {:pow, "~> 1.0.23"},
+      # {:plug_crypto, "~> 1.2", override: true}
     ]
   end
 

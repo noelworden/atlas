@@ -19,6 +19,6 @@ user_changeset = %{
   password_confirmation: "password"
 }
 
-%User{}
-|> User.changeset(user_changeset)
-|> Repo.insert()
+%Atlas.Users.User{}
+|> Atlas.Users.User.changeset(user_changeset)
+|> Atlas.Repo.insert()
